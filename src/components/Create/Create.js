@@ -5,6 +5,7 @@ import './create.sass'
 import {Link} from 'react-router-dom'
 import store, {ADD_EVENT} from './../../store'
 
+
 export default class Create extends Component {
     constructor() {
         super()
@@ -18,6 +19,7 @@ export default class Create extends Component {
             number: '',
             view: false
         }
+        console.log(this.state.startingDate)
     }
     handleChange = (e, key) => {
         this.setState({
@@ -51,11 +53,11 @@ export default class Create extends Component {
                 <div>Title</div>
                 <input onChange={(e) => this.handleChange(e, 'title')}  type="text" placeholder='Title of the event'/>
                 <input onChange={(e) => this.handleChange(e, 'description')}  type="text" placeholder='Description of the event'/>
-                <input onChange={(e) => this.handleChange(e, 'startingTime')}  type="text" placeholder='Time the event will start'/>
-                <input onChange={(e) => this.handleChange(e, 'endingTime')}  type="text" placeholder='Time the event will end'/>
-                <input onChange={(e) => this.handleChange(e, 'startingDate')}  type="text" placeholder='The day the event will start'/>
-                <input onChange={(e) => this.handleChange(e, 'endingDate')}  type="text" placeholder='The day the event will end'/>
-                <input onChange={(e) => this.handleChange(e, 'number')}  type="text" placeholder='Phone number'/>
+                <input onChange={(e) => this.handleChange(e, 'startingTime')}  type="time" placeholder='Time the event will end'/>
+                <input onChange={(e) => this.handleChange(e, 'endingTime')}  type="time" placeholder='Time the event will end'/>
+                <input onChange={(e) => this.handleChange(e, 'startingDate')}  type="date" min="2019-09-01" max="2019-12-31" name="trip-start"/>
+                <input onChange={(e) => this.handleChange(e, 'endingDate')}  type="date" min="2019-09-01" max="2019-12-31" name="trip-start"/>
+                <input onChange={(e) => this.handleChange(e, 'number')} placeholder='Phone number' type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"required/>
             </div>
             {this.state.view 
             ? (
