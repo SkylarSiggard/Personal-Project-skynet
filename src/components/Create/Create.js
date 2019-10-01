@@ -12,12 +12,18 @@ export default class Create extends Component {
             endingTime: '',
             startingDate: '',
             endingDate: '',
-            number: ''
+            number: '',
+            view: false
         }
     }
     handleChange = (e, key) => {
         this.setState({
             [key]: e.target.value
+        })
+    }
+    toggleView = () => {
+        this.setState({
+            view: !this.state.view
         })
     }
     render() {
@@ -34,7 +40,9 @@ export default class Create extends Component {
                 <input onChange={(e) => this.handleChange(e, 'endingDate')}  type="text" placeholder='The day the event will end'/>
                 <input onChange={(e) => this.handleChange(e, 'number')}  type="text" placeholder='Phone number'/>
             </div>
-            <div className="viewer-box">
+            {this.state.view 
+            ? (
+                <div className="viewer-box">
                 <div className="title">
                     {`Event name ${this.state.title}`}
                 </div>
@@ -50,7 +58,11 @@ export default class Create extends Component {
                 <div className="number">
                     {`Phone number ${this.state.number}`}
                 </div>
+                <button onClick={() => this.toggleView()}>Close View</button>
             </div>
+            ) : (
+                <button onClick={() => this.toggleView()}>View the event</button>
+            )}
         </div>
         )
     }
