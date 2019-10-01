@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Header from './../Header/Header'
 import './create.sass'
-import axios from 'axios'
+// import axios from 'axios'
 import {Link} from 'react-router-dom'
 import store, {ADD_EVENT} from './../../store'
 
@@ -81,7 +81,7 @@ export default class Create extends Component {
                 <button onClick={() => this.toggleView()}>View the event</button>
             )}
             <div>
-            <button onClick={() => this.create()}>Submit</button>
+            <Link to='/list'><button onClick={() => this.create()}>Submit</button></Link>
             </div>
         </div>
         )

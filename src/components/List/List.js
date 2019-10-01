@@ -21,6 +21,16 @@ export default class List extends Component {
             number: ''
         }
     }
+    handleChange = (e, key) => {
+        this.setState({
+            [key]: e.target.value
+        })
+    }
+    toggleEdit = () => {
+        this.setState({
+            edit: !this.state.edit
+        })
+    }
     render() {
         return(
         <div className="list">
@@ -30,18 +40,30 @@ export default class List extends Component {
                 this.state.listOfEvents.map(listOfEvents => {
                     return (
                     <div className='items'>
-                        {listOfEvents.title}
-                                {listOfEvents.description}
-                                {listOfEvents.startingTime}
-                                {listOfEvents.endingTime}
-                                {listOfEvents.startingDate}
-                                {listOfEvents.endingDate}
-                                {listOfEvents.number}
+                        <div className="title">
+                            {`Event name ${listOfEvents.title}`}
+                        </div>
+                        <div className="description">
+                            {`Description ${listOfEvents.description}`}
+                        </div>
+                        <div className="times">
+                            {`Event starts ${listOfEvents.startingTime} and ends at ${listOfEvents.endingTime}`}
+                        </div>
+                        <div className="dates">
+                            {`Day the event starts ${listOfEvents.startingDate} and ends ${listOfEvents.endingDate}`}
+                        </div>
+                        <div className="number">
+                            {`Phone number ${listOfEvents.number}`}
+                        </div>
                         {!this.state.edit ? <>{this.props.text}</> :
                     <div>
-                    <input onChange={(e) => this.handleChange(e, 'picture')} placeholder="url" type="text" />
-                    <input onChange={(e) => this.handleChange(e, 'name')} placeholder='name' type="text" />
-                    <input onChange={(e) => this.handleChange(e, 'price')} placeholder='price' type="text" />
+                    <input onChange={(e) => this.handleChange(e, 'title')} placeholder="title" type="text" />
+                    <input onChange={(e) => this.handleChange(e, 'description')} placeholder='Description' type="text" />
+                    <input onChange={(e) => this.handleChange(e, 'startingTime')} placeholder='Starting Time' type="text" />
+                    <input onChange={(e) => this.handleChange(e, 'endingTime')} placeholder='Ending Time' type="text" />
+                    <input onChange={(e) => this.handleChange(e, 'startingDate')} placeholder='Starting Date' type="text" />
+                    <input onChange={(e) => this.handleChange(e, 'endingDate')} placeholder='Ending Date' type="text" />
+                    <input onChange={(e) => this.handleChange(e, 'number')} placeholder='number' type="text" />
                     {/* <button onClick={() => this.handleSubmit(products.item_id)}>Submit</button> */}
                     </div>}
                         <button onClick={() => this.toggleEdit()}>Edit</button>
