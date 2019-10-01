@@ -4,8 +4,7 @@ DROP TABLE IF EXISTS user_login_info;
 
 CREATE TABLE user_info (
 	user_id SERIAL PRIMARY KEY,
-	user_email text,
-	phone_number varchar(10)
+	user_email text
 );
 CREATE TABLE user_login_info (
     user_login_id SERIAL PRIMARY KEY,
@@ -20,7 +19,8 @@ CREATE TABLE user_events (
 	starting_day date,
 	ending_day date,
 	starting_time time,
-	ending_time time
+	ending_time time,
+	phone_number varchar(10)
 );
 select * from user_info;
 select * from user_events;
