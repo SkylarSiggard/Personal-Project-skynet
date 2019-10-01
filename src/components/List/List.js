@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Header from './../Header/Header'
+import './list.sass'
 
 export default class List extends Component {
     constructor() {

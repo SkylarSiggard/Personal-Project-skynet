@@ -1,4 +1,7 @@
 import React, {Component} from 'react'
+import './lander.sass'
+import {Link} from 'react-router-dom'
+
 
 export default class Lander extends Component {
     constructor() {
@@ -23,29 +26,32 @@ export default class Lander extends Component {
     render() {
         return(
         <div className="lander">
-            Lander
             {!this.state.register
             ? (
             <div className="login">
-                <div>email</div>
+                <div>Login in here</div>
+                <div>Login Email</div>
                 <input onChange={(e) => this.handleChange(e, 'email')} type="text" placeholder='email'/>
-                <div>password</div>
+                <div>Your Password</div>
                 <input onChange={(e) => this.handleChange(e, 'password')} type="text" placeholder='password'/>
                 <div>
                     <button onClick={() => this.toggleChange()}>Register</button>
-                    <button>Login</button>
+                    <Link to='/list'><button>Login</button></Link>
                 </div>
             </div>
             ) : (
                 <div className="login">
-                <div>email</div>
-                <input onChange={(e) => this.handleChange(e, 'email')} type="text" placeholder='email'/>
-                <div>password</div>
-                <input onChange={(e) => this.handleChange(e, 'password')} type="text" placeholder='password'/>
-                <input onChange={(e) => this.handleChange(e, 'password2')} type="text" placeholder='password'/>
+                    <div>Create an account</div>
+                    <div>Your Email</div>
+                    <input onChange={(e) => this.handleChange(e, 'email')} type="text" placeholder='email'/>
+                    <div>Set a password</div>
+                    <div>
+                        <input onChange={(e) => this.handleChange(e, 'password')} type="text" placeholder='password'/>
+                    </div>
+                        <input onChange={(e) => this.handleChange(e, 'password2')} type="text" placeholder='repeat password'/>
                 <div>
                     <button onClick={() => this.toggleChange()}>Back to Login</button>
-                    <button>Register</button>
+                    <Link to='/list'><button>Register</button></Link>
                 </div>
             </div>
             )}
