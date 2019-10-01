@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Header from './../Header/Header'
 
 export default class List extends Component {
     constructor() {
@@ -10,6 +11,7 @@ export default class List extends Component {
     render() {
         return(
         <div className="list">
+            <Header/>
             List
         </div>
         )
