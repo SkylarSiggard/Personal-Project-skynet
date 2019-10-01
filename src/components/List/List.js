@@ -8,7 +8,7 @@ export default class List extends Component {
     constructor() {
         super()
         const reduxState = store.getState()
-        // console.log('list array', reduxState.listOfEvents)
+        console.log('list array', reduxState.listOfEvents)
         this.state = {
             listOfEvents: reduxState.listOfEvents,
             edit: false,
