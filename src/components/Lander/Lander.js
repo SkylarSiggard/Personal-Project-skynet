@@ -10,7 +10,8 @@ export default class Lander extends Component {
             register: false,
             email: '',
             password: '',
-            password2: ''
+            password2: '',
+            number: ''
         }
     }
     toggleChange = () => {

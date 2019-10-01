@@ -14,6 +14,6 @@ app.use(session({
 }))
 
 // massive(CONNECTION_STRING).then(db => {
-//     app.set('db', db)
+//     app.set('db', db) 
 // })
-app.listen(SERVER_PORT, () => console.log(`Server ${SERVER_PORT} is running`))
+app.listen(SERVER_PORT, () => console.log(`${SERVER_PORT} is running! Dont touch anything!`))
