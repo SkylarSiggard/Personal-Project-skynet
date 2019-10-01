@@ -8,8 +8,11 @@ export const ADD_EVENT = "ADD_EVENT"
 
 function reducer(state = initialState, action) {
     switch(action.type)  {
+
         case ADD_EVENT: 
-            
+        // console.log('store event', action.payload)
+            state.listOfEvents.push(action.payload)
+            return {...state}
 
         default: 
         return state

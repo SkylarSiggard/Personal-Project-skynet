@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 import Header from './../Header/Header'
 import './create.sass'
+import axios from 'axios'
+import {Link} from 'react-router-dom'
+import store, {ADD_EVENT} from './../../store'
 
 export default class Create extends Component {
     constructor() {
@@ -24,6 +27,20 @@ export default class Create extends Component {
     toggleView = () => {
         this.setState({
             view: !this.state.view
+        })
+    }
+    create() {
+        store.dispatch({
+            type: ADD_EVENT,
+            payload: {
+            title: this.state.title,
+            description: this.state.description,
+            startingTime: this.state.startingTime,
+            endingTime: this.state.endingTime,
+            startingDate: this.state.startingDate,
+            endingDate: this.state.endingDate,
+            number: this.state.number
+            }
         })
     }
     render() {
@@ -63,6 +80,9 @@ export default class Create extends Component {
             ) : (
                 <button onClick={() => this.toggleView()}>View the event</button>
             )}
+            <div>
+            <button onClick={() => this.create()}>Submit</button>
+            </div>
         </div>
         )
     }
