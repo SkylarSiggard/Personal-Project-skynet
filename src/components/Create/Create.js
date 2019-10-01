@@ -53,10 +53,10 @@ export default class Create extends Component {
                 <div>Title</div>
                 <input onChange={(e) => this.handleChange(e, 'title')}  type="text" placeholder='Title of the event'/>
                 <input onChange={(e) => this.handleChange(e, 'description')}  type="text" placeholder='Description of the event'/>
-                <input onChange={(e) => this.handleChange(e, 'startingTime')}  type="time" placeholder='Time the event will end'/>
-                <input onChange={(e) => this.handleChange(e, 'endingTime')}  type="time" placeholder='Time the event will end'/>
                 <input onChange={(e) => this.handleChange(e, 'startingDate')}  type="date" min="2019-09-01" max="2019-12-31" name="trip-start"/>
+                <input onChange={(e) => this.handleChange(e, 'startingTime')}  type="time" placeholder='Time the event will end'/>
                 <input onChange={(e) => this.handleChange(e, 'endingDate')}  type="date" min="2019-09-01" max="2019-12-31" name="trip-start"/>
+                <input onChange={(e) => this.handleChange(e, 'endingTime')}  type="time" placeholder='Time the event will end'/>
                 <input onChange={(e) => this.handleChange(e, 'number')} placeholder='Phone number' type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"required/>
             </div>
             {this.state.view 
@@ -69,10 +69,10 @@ export default class Create extends Component {
                     {`Description ${this.state.description}`}
                 </div>
                 <div className="times">
-                    {`Event starts ${this.state.startingTime} and ends at ${this.state.endingTime}`}
+                    {`Event starts ${this.state.startingDate} and ends at ${this.state.startingTime}`}
                 </div>
                 <div className="dates">
-                    {`Day the event starts ${this.state.startingDate} and ends ${this.state.endingDate}`}
+                    {`Day the event starts ${this.state.endingDate} and ends ${this.state.endingTime}`}
                 </div>
                 <div className="number">
                     {`Phone number ${this.state.number}`}
