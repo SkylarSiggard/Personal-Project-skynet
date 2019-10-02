@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import './lander.sass'
+import './lander.scss'
 import swal from 'sweetalert2'
 import axios from 'axios'
 

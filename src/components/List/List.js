@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Header from './../Header/Header'
-import './list.sass'
+import './list.scss'
 import {Link} from 'react-router-dom'
 import store from './../../store'
 

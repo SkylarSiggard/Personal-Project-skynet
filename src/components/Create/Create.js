@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Header from './../Header/Header'
-import './create.sass'
+import './create.scss'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import store, {ADD_EVENT} from './../../store'
