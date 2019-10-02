@@ -19,7 +19,7 @@ module.exports = {
     
     req.session.user = {email: user.email, userId: user.user_id}
 
-    return res.status(200).send(req.session.user)
+    return res.status(200).send({message: 'Logged in', user: req.session.user, loggedIn: true})
     },
     async login(req, res) {
         const db = req.app.get('db')

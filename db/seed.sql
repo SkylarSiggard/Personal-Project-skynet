@@ -19,3 +19,15 @@ CREATE TABLE user_events (
 );
 select * from user_info;
 select * from user_events;
+
+
+
+
+INSERT INTO user_events (title, description, starting_day,
+ending_day, starting_time, ending_time, phone_number, user_id)
+VALUES ('play', 'play game', '10-2-19', '10-3-12', '12:10pm', '12:20pm', '8015570544', 2);
+
+
+
+select * from user_info;
+select * from user_events;

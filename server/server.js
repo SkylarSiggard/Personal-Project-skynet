@@ -4,6 +4,7 @@ const session = require('express-session')
 const massive = require('massive')
 const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env
 const authCtrl = require('./controllers/authController')
+const eventCtrl = require('./controllers/eventController')
 
 const app = express()
 
@@ -18,6 +19,8 @@ app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
 app.delete('/auth/logout', authCtrl.logout)
 //event endpoints
+app.get('/api/events', eventCtrl.getUserEvents)
+app.post('/api/events', eventCtrl.addEvent)
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db) 
