@@ -37,7 +37,7 @@ class Lander extends Component {
     }
     register = async () => {
         const {email, password, password2} = this.state
-        if (!password === password2) {
+        if (password !== password2) {
             swal.fire({type: 'error', text: 'Passwords dont match'})
         } else {
             try {

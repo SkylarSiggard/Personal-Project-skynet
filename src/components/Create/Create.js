@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Header from './../Header/Header'
 import './create.sass'
-// import axios from 'axios'
+import axios from 'axios'
 import {Link} from 'react-router-dom'
 import store, {ADD_EVENT} from './../../store'
 
@@ -19,7 +19,6 @@ export default class Create extends Component {
             number: '',
             view: false
         }
-        console.log(this.state.startingDate)
     }
     handleChange = (e, key) => {
         this.setState({
@@ -44,9 +43,9 @@ export default class Create extends Component {
             number: this.state.number
             }
         })
+        
     }
     render() {
-    console.log(this.props)
         return(
         <div className="create">
             <Header history={this.props.history}/>

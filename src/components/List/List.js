@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Header from './../Header/Header'
 import './list.sass'
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import store from './../../store'
 
 export default class List extends Component {
@@ -64,16 +64,17 @@ export default class List extends Component {
                     <input onChange={(e) => this.handleChange(e, 'startingDate')} placeholder='Starting Date' type="text" />
                     <input onChange={(e) => this.handleChange(e, 'endingDate')} placeholder='Ending Date' type="text" />
                     <input onChange={(e) => this.handleChange(e, 'number')} placeholder='number' type="text" />
-                    {/* <button onClick={() => this.handleSubmit(products.item_id)}>Submit</button> */}
+                    <button>Submit</button>
                     </div>}
                         <button onClick={() => this.toggleEdit()}>Edit</button>
-                        {/* <button onClick={() => this.handleDelete(products.item_id)}>Delete</button> */}
+                        <button>Delete</button>
                     </div>
                     )
                 })
                 ) : null
             }
             {/* <h1>{this.state.products.length ? this.state.products[0].name : null}</h1> */}
+            <Link to='/create'><button>Add to list</button></Link>
         </div>
         )
     }
