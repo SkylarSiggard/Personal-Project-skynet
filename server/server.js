@@ -3,6 +3,7 @@ const express = require('express')
 const session = require('express-session')
 const massive = require('massive')
 const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env
+const authCtrl = require('./controllers/authController')
 
 const app = express()
 
@@ -12,8 +13,13 @@ app.use(session({
     saveUninitialized: false,
     secret: SESSION_SECRET
 }))
+//auth endpoints 
+app.post('/auth/register', authCtrl.register)
+app.post('/auth/login', authCtrl.login)
+app.delete('/auth/logout', authCtrl.logout)
+//event endpoints
 
-// massive(CONNECTION_STRING).then(db => {
-//     app.set('db', db) 
-// })
-app.listen(SERVER_PORT, () => console.log(`${SERVER_PORT} is running! Dont touch anything!`))
+massive(CONNECTION_STRING).then(db => {
+    app.set('db', db) 
+    app.listen(SERVER_PORT, () => console.log(`${SERVER_PORT} is running! Dont touch anything!`))
+})

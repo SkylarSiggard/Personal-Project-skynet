@@ -1,3 +1,3 @@
-INSERT INTO user_info (user_email, phone_number) 
+INSERT INTO user_info (user_email) 
 VALUES (${email});
 
