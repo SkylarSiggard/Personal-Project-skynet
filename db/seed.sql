@@ -1,10 +1,9 @@
 DROP TABLE IF EXISTS user_info;
 DROP TABLE IF EXISTS user_events;
-DROP TABLE IF EXISTS user_login_info;
 
 CREATE TABLE user_info (
 	user_id SERIAL PRIMARY KEY,
-	user_email text
+	email text,
     hash TEXT
 );
 CREATE TABLE user_events (
