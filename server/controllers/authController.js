@@ -5,26 +5,20 @@ module.exports = {
     const db = req.app.get('db')
     const { email, password} = req.body
 
-    const user = await db.find_email(email)
-    console.log('email found', user)
+    const result = await db.find_user([email])
     
-    if (user[0]) return res.status(200).send({ message: 'Email already in use' })
+    if (result[0]) return res.status(409).send({ message: 'Email already in use' })
     
     const salt = bcrypt.genSaltSync(10)
     const hash = bcrypt.hashSync(password, salt)
     
-    const userId = await db.add_user({ email })
-    console.log('made it to hash', userId)
+    const registerUser = await db.register_user([ email, hash ])
+
+    const user = registerUser[0]
     
-    db.add_hash({ user_id: userId[0].user_id , hash }).catch(err => {
-        return res.sendStatus(503)
-    })
-    
-    req.session.user = { email, user_id: userId[0].user_id }
-    
-    res
-    .status(201)
-    .send({ message: 'Logged in', user: req.session.user, loggedIn: true })
+    req.session.user = {email: user.email, user_id: user_id}
+
+    return res.status(200).send(req.session.user)
     },
     async login(req, res) {
         const db = req.app.get('db')

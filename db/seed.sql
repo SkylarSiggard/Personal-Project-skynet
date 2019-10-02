@@ -5,10 +5,6 @@ DROP TABLE IF EXISTS user_login_info;
 CREATE TABLE user_info (
 	user_id SERIAL PRIMARY KEY,
 	user_email text
-);
-CREATE TABLE user_login_info (
-    user_login_id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES user_info(user_id),
     hash TEXT
 );
 CREATE TABLE user_events (
@@ -24,4 +20,3 @@ CREATE TABLE user_events (
 );
 select * from user_info;
 select * from user_events;
-select * from user_login_info;
