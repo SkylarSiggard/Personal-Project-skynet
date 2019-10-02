@@ -34,7 +34,7 @@ export default class List extends Component {
     render() {
         return(
         <div className="list">
-            <Header/>
+            <Header history={this.props.history}/>
             {
                 this.state.listOfEvents.length ? (
                 this.state.listOfEvents.map(listOfEvents => {

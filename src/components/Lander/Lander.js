@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
 import './lander.sass'
-import {Link} from 'react-router-dom'
 import swal from 'sweetalert2'
 import axios from 'axios'
 
-export default class Lander extends Component {
+class Lander extends Component {
     constructor() {
         super()
         this.state = {
@@ -33,21 +32,19 @@ export default class Lander extends Component {
     }
     register = async () => {
         const {email, password, password2} = this.state
-        if (password === password2) {
-            const res = await axios.post('/auth/register', {email, password}).then(user => {
-                this.setState({
-                    email: '',
-                    password: ''
-                })
-                this.props.updateUser(res.user.data)
-            })
-            .catch(err => {
-                this.setState({email: '', password: ''})
-                swal.fire({type: 'success', text: 'You are Registered!'})
-            })
-        } else {
+        if (!password === password2) {
             swal.fire({type: 'error', text: 'Passwords dont match'})
-        }
+        } else {
+            try {
+                const res = await axios.post('/auth/register', {email, password})
+                if (res.data.user) {
+                    this.updateUser(res.data.user)
+                    swal.fire({type: 'success', text: res.data.message})
+                } 
+            } catch (error) {
+                swal.fire({type: 'error', text: 'Email not found or Password is wrong'})
+            }
+        } 
     }
     login = async () => {
         const {email, password} = this.state
@@ -55,7 +52,7 @@ export default class Lander extends Component {
         if (res.data.user) {
             this.updateUser(res.data.user)
         }
-        swal.fire({type: 'success', text: `You're Logged in!`})
+        swal.fire({type: 'success', text: res.data.message})
     }
     render() {
         return(
@@ -70,7 +67,7 @@ export default class Lander extends Component {
                 <input onChange={(e) => this.handleChange(e, 'password')} type="text" placeholder='password'/>
                 <div>
                     <button onClick={() => this.toggleChange()}>Register</button>
-                    <Link to='/list'><button onClick={() => this.login()}>Login</button></Link>
+                    <button onClick={() => this.login()}>Login</button>
                 </div>
             </div>
             ) : (
@@ -85,9 +82,7 @@ export default class Lander extends Component {
                         <input onChange={(e) => this.handleChange(e, 'password2')} type="text" placeholder='repeat password'/>
                 <div>
                     <button onClick={() => this.toggleChange()}>Back to Login</button>
-                    {/* <Link to='/list'> */}
                         <button onClick={() => this.register()}>Register</button>
-                        {/* </Link> */}
                 </div>
             </div>
             )}
@@ -95,3 +90,4 @@ export default class Lander extends Component {
         )
     }
 }
+export default Lander
