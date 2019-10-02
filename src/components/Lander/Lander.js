@@ -14,6 +14,11 @@ class Lander extends Component {
             user: {}
         }
     }
+    async componentDidMount() {
+        this.setState({
+            user: {}
+        })
+    }
     updateUser = (user) => {
         this.setState({
             user,
@@ -38,23 +43,28 @@ class Lander extends Component {
             try {
                 const res = await axios.post('/auth/register', {email, password})
                 if (res.data.user) {
-                    this.updateUser(res.data.user)
                     swal.fire({type: 'success', text: res.data.message})
+                    this.updateUser(res.data.user)
                     this.props.history.push('/list')
                 } 
             } catch (error) {
-                swal.fire({type: 'error', text: 'Email not found or Password is wrong'})
+                swal.fire({type: 'error', text: 'Email is already in use'})
             }
         } 
     }
     login = async () => {
         const {email, password} = this.state
-        const res = await axios.post('/auth/login', {email, password})
-        if (res.data.user) {
-            this.updateUser(res.data.user)
+        try {
+            const res = await axios.post('/auth/login', {email, password})
+            swal.fire({type: 'error', text: 'Wrong password or wrong email'})
+            if (res.data.user) {
+                this.updateUser(res.data.user)
+                this.props.history.push('/list')
+                swal.fire({type: 'success', text: res.data.message})
+            }
+        } catch (error) {  
+            swal.fire({type: 'error', text: 'Wrong password or wrong email'})
         }
-        this.props.history.push('/list')
-        swal.fire({type: 'success', text: res.data.message})
     }
     render() {
         return(

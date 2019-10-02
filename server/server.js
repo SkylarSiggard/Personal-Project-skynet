@@ -12,7 +12,10 @@ app.use(express.json())
 app.use(session({
     resave: false,
     saveUninitialized: false,
-    secret: SESSION_SECRET
+    secret: SESSION_SECRET,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 10
+    }
 }))
 //auth endpoints 
 app.post('/auth/register', authCtrl.register)
