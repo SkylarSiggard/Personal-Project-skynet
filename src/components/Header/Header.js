@@ -10,12 +10,10 @@ export default class Header extends Component {
     state = {}
     logout = async () => {
         const res = await axios.delete('/auth/logout')
-        console.log(res)
         this.props.history.push('/')
         swal.fire({type: 'success', text: res.data.message})
     }
     render() {
-        console.log(this.props.history)
         return (
             <div>
             <Link to='/list'><button>List</button></Link>

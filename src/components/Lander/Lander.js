@@ -40,6 +40,7 @@ class Lander extends Component {
                 if (res.data.user) {
                     this.updateUser(res.data.user)
                     swal.fire({type: 'success', text: res.data.message})
+                    this.props.history.push('/list')
                 } 
             } catch (error) {
                 swal.fire({type: 'error', text: 'Email not found or Password is wrong'})
@@ -52,6 +53,7 @@ class Lander extends Component {
         if (res.data.user) {
             this.updateUser(res.data.user)
         }
+        this.props.history.push('/list')
         swal.fire({type: 'success', text: res.data.message})
     }
     render() {
@@ -82,7 +84,7 @@ class Lander extends Component {
                         <input onChange={(e) => this.handleChange(e, 'password2')} type="text" placeholder='repeat password'/>
                 <div>
                     <button onClick={() => this.toggleChange()}>Back to Login</button>
-                        <button onClick={() => this.register()}>Register</button>
+                    <button onClick={() => this.register()}>Register</button>
                 </div>
             </div>
             )}
