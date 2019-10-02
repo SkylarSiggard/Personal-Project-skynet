@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom'
 import swal from 'sweetalert2'
 import axios from 'axios'
 
-
 export default class Lander extends Component {
     constructor() {
         super()
@@ -12,8 +11,15 @@ export default class Lander extends Component {
             register: false,
             email: '',
             password: '',
-            password2: ''
+            password2: '',
+            user: {}
         }
+    }
+    updateUser = (user) => {
+        this.setState({
+            user,
+        });
+        console.log(user)
     }
     toggleChange = () => {
         this.setState({
@@ -25,15 +31,15 @@ export default class Lander extends Component {
             [key]: e.target.value
         })
     }
-    register = () => {
+    register = async () => {
         const {email, password, password2} = this.state
         if (password === password2) {
-            axios.post('/auth/register', {email, password}).then(user => {
+            const res = await axios.post('/auth/register', {email, password}).then(user => {
                 this.setState({
                     email: '',
                     password: ''
                 })
-                this.props.updateUser(user.data)
+                this.props.updateUser(res.user.data)
             })
             .catch(err => {
                 this.setState({email: '', password: ''})
@@ -43,7 +49,14 @@ export default class Lander extends Component {
             swal.fire({type: 'error', text: 'Passwords dont match'})
         }
     }
-    
+    login = async () => {
+        const {email, password} = this.state
+        const res = await axios.post('/auth/login', {email, password})
+        if (res.data.user) {
+            this.updateUser(res.data.user)
+        }
+        swal.fire({type: 'success', text: `You're Logged in!`})
+    }
     render() {
         return(
         <div className="lander">
@@ -57,7 +70,7 @@ export default class Lander extends Component {
                 <input onChange={(e) => this.handleChange(e, 'password')} type="text" placeholder='password'/>
                 <div>
                     <button onClick={() => this.toggleChange()}>Register</button>
-                    <Link to='/list'><button>Login</button></Link>
+                    <Link to='/list'><button onClick={() => this.login()}>Login</button></Link>
                 </div>
             </div>
             ) : (
