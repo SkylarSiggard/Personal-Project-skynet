@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import './lander.sass'
 import {Link} from 'react-router-dom'
+import swal from 'sweetalert2'
+import axios from 'axios'
 
 
 export default class Lander extends Component {
@@ -10,8 +12,7 @@ export default class Lander extends Component {
             register: false,
             email: '',
             password: '',
-            password2: '',
-            number: ''
+            password2: ''
         }
     }
     toggleChange = () => {
@@ -24,6 +25,25 @@ export default class Lander extends Component {
             [key]: e.target.value
         })
     }
+    register = () => {
+        const {email, password, password2} = this.state
+        if (password === password2) {
+            axios.post('/auth/register', {email, password}).then(user => {
+                this.setState({
+                    email: '',
+                    password: ''
+                })
+                this.props.updateUser(user.data)
+            })
+            .catch(err => {
+                this.setState({email: '', password: ''})
+                swal.fire({type: 'success', text: 'You are Registered!'})
+            })
+        } else {
+            swal.fire({type: 'error', text: 'Passwords dont match'})
+        }
+    }
+    
     render() {
         return(
         <div className="lander">
@@ -52,7 +72,9 @@ export default class Lander extends Component {
                         <input onChange={(e) => this.handleChange(e, 'password2')} type="text" placeholder='repeat password'/>
                 <div>
                     <button onClick={() => this.toggleChange()}>Back to Login</button>
-                    <Link to='/list'><button>Register</button></Link>
+                    {/* <Link to='/list'> */}
+                        <button onClick={() => this.register()}>Register</button>
+                        {/* </Link> */}
                 </div>
             </div>
             )}
