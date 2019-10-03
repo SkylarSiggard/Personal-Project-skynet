@@ -2,8 +2,9 @@ import React, {Component} from 'react'
 import Header from './../Header/Header'
 import './list.scss'
 import {Link} from 'react-router-dom'
-import store, {GET_EVENTS} from './../../store'
+import store, {GET_EVENTS, DELETE_EVENT} from './../../store'
 import axios from 'axios'
+import { async } from 'q'
 
 
 export default class List extends Component {
@@ -31,6 +32,14 @@ export default class List extends Component {
             })
         })
     }
+    handleDelete = async (event_id) => {
+        axios.delete(`/api/events/${event_id}`).then(res => {
+            store.dispatch({
+                type: DELETE_EVENT,
+                payload: event_id
+            })
+        })
+    } 
     handleChange = (e, key) => {
         this.setState({
             [key]: e.target.value
@@ -77,7 +86,7 @@ export default class List extends Component {
                     <button>Submit</button>
                     </div>}
                         <button onClick={() => this.toggleEdit()}>Edit</button>
-                        <button>Delete</button>
+                        <button onClick={() => this.handleDelete(listOfEvents.event_id)}>Delete</button>
                     </div>
                     )
                 })
