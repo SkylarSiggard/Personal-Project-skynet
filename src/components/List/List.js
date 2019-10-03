@@ -27,7 +27,7 @@ export default class List extends Component {
                 listOfEvents: res.data
             })
         })
-        console.log('list of events', this.state.listOfEvents)
+        // console.log('list of events', this.state.listOfEvents)
     }
     handleEdit = (event_id) =>{
         axios.put(`/api/events/${event_id}`, {
@@ -40,7 +40,7 @@ export default class List extends Component {
             phonenumber: this.state.phonenumber
             }).then(res => {
                 this.setState({
-                    edit: !this.state.edit
+                    edit: false
                 })
             })
             this.componentDidMount()
@@ -86,13 +86,13 @@ export default class List extends Component {
                         </div>
                         {!this.state.edit ? <>{this.props.text}</> :
                     <div>
-                    <input onChange={(e) => this.handleChange(e, 'title')} placeholder="title" type="text" />
-                    <input onChange={(e) => this.handleChange(e, 'description')} placeholder='Description' type="text" />
-                    <input onChange={(e) => this.handleChange(e, 'startingtime')} placeholder='Starting Time' type="text" />
-                    <input onChange={(e) => this.handleChange(e, 'endingtime')} placeholder='Ending Time' type="text" />
-                    <input onChange={(e) => this.handleChange(e, 'startingdate')} placeholder='Starting Date' type="text" />
-                    <input onChange={(e) => this.handleChange(e, 'endingdate')} placeholder='Ending Date' type="text" />
-                    <input onChange={(e) => this.handleChange(e, 'phonenumber')} placeholder='number' type="text" />
+                        <input onChange={(e) => this.handleChange(e, 'title')}  type="text" placeholder='Title of the event'/>
+                        <input onChange={(e) => this.handleChange(e, 'description')}  type="text" placeholder='Description of the event'/>
+                        <input onChange={(e) => this.handleChange(e, 'startingday')}  type="date" min="2019-10-01" max="2019-12-31" name="trip-start"/>
+                        <input onChange={(e) => this.handleChange(e, 'startingtime')}  type="time" placeholder='Time the event will end'/>
+                        <input onChange={(e) => this.handleChange(e, 'endingday')}  type="date" min="2019-10-01" max="2019-12-31" name="trip-start"/>
+                        <input onChange={(e) => this.handleChange(e, 'endingtime')}  type="time" placeholder='Time the event will end'/>
+                        <input onChange={(e) => this.handleChange(e, 'phonenumber')} placeholder='Phone number' type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"required/>
                     <button onClick={() => this.handleEdit(listOfEvents.event_id)}>Submit</button>
                     </div>}
                         <button onClick={() => this.toggleEdit()}>Edit</button>
