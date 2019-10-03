@@ -9,7 +9,6 @@ export default class List extends Component {
     constructor() {
         super()
         const reduxState = store.getState()
-        console.log('list of events', reduxState.listOfEvents)
         this.state = {
             listOfEvents: reduxState.listOfEvents,
             edit: false,
@@ -24,21 +23,14 @@ export default class List extends Component {
     }
     componentDidMount() {
         axios.get('/api/events').then(res => {
-            store.dispatch({
-                type: GET_EVENTS,
-                payload: res.data
+            this.setState({
+                listOfEvents: res.data
             })
         })
+        console.log('list of events', this.state.listOfEvents)
     }
     handleDelete = async (event_id) => {
-        const action ={
-            type: DELETE_EVENT,
-            payload: event_id
-        }
-        store.dispatch(action)
-        axios.delete(`/api/events/${event_id}`).then(res => {
-            console.log(res)
-        })
+    axios.delete(`/api/events/${event_id}`)
     } 
     handleChange = (e, key) => {
         this.setState({
