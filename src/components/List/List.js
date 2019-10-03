@@ -46,7 +46,7 @@ export default class List extends Component {
             this.componentDidMount()
     }
     handleDelete = async (event_id) => {
-        console.log('at delete', event_id)
+        // console.log('at delete', event_id)
         axios.delete(`/api/events/${event_id}`)
         this.componentDidMount()
     } 
