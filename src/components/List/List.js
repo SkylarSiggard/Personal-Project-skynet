@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Header from './../Header/Header'
 import './list.scss'
 import {Link} from 'react-router-dom'
-import store, {GET_EVENTS, DELETE_EVENT} from './../../store'
+import store from './../../store'
 import axios from 'axios'
 
 export default class List extends Component {
@@ -28,6 +28,22 @@ export default class List extends Component {
             })
         })
         console.log('list of events', this.state.listOfEvents)
+    }
+    handleEdit = (event_id) =>{
+        axios.put(`/api/events/${event_id}`, {
+            title: this.state.title,
+            description: this.state.description,
+            startingtime: this.state.startingtime,
+            endingtime: this.state.endingtime,
+            startingday: this.state.startingday,
+            endingday: this.state.endingday,
+            phonenumber: this.state.phonenumber
+            }).then(res => {
+                this.setState({
+                    edit: !this.state.edit
+                })
+            })
+            this.componentDidMount()
     }
     handleDelete = async (event_id) => {
         console.log('at delete', event_id)
@@ -77,7 +93,7 @@ export default class List extends Component {
                     <input onChange={(e) => this.handleChange(e, 'startingdate')} placeholder='Starting Date' type="text" />
                     <input onChange={(e) => this.handleChange(e, 'endingdate')} placeholder='Ending Date' type="text" />
                     <input onChange={(e) => this.handleChange(e, 'phonenumber')} placeholder='number' type="text" />
-                    <button>Submit</button>
+                    <button onClick={() => this.handleEdit(listOfEvents.event_id)}>Submit</button>
                     </div>}
                         <button onClick={() => this.toggleEdit()}>Edit</button>
                         <button onClick={() => this.handleDelete(listOfEvents.event_id)}>Delete</button>

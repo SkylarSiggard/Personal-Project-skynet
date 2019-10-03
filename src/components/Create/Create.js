@@ -43,6 +43,25 @@ export default class Create extends Component {
             phonenumber: this.state.phonenumber
             }
         })
+        axios.post('/api/events', {
+            title: this.state.title,
+            description: this.state.description,
+            startingtime: this.state.startingtime,
+            endingtime: this.state.endingtime,
+            startingday: this.state.startingday,
+            endingday: this.state.endingday,
+            phonenumber: this.state.phonenumber
+            }).then(res => {
+                this.setState({
+                    title: '',
+            description: '',
+            startingtime: '',
+            endingtime: '',
+            startingday: '',
+            endingday: '',
+            phonenumber: ''
+                })
+            })
     }
     render() {
         return(
