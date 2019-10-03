@@ -4,8 +4,6 @@ import './list.scss'
 import {Link} from 'react-router-dom'
 import store, {GET_EVENTS, DELETE_EVENT} from './../../store'
 import axios from 'axios'
-import { async } from 'q'
-
 
 export default class List extends Component {
     constructor() {
@@ -17,11 +15,11 @@ export default class List extends Component {
             edit: false,
             title: '',
             description: '',
-            starting_time: '',
-            ending_time: '',
-            starting_day: '',
-            ending_day: '',
-            phone_number: ''
+            startingTime: '',
+            endingTime: '',
+            startingDay: '',
+            endingDay: '',
+            phoneNumber: ''
         }
     }
     componentDidMount() {
@@ -33,11 +31,13 @@ export default class List extends Component {
         })
     }
     handleDelete = async (event_id) => {
+        const action ={
+            type: DELETE_EVENT,
+            payload: event_id
+        }
+        store.dispatch(action)
         axios.delete(`/api/events/${event_id}`).then(res => {
-            store.dispatch({
-                type: DELETE_EVENT,
-                payload: event_id
-            })
+            console.log(res)
         })
     } 
     handleChange = (e, key) => {
@@ -66,13 +66,13 @@ export default class List extends Component {
                             {`Description ${listOfEvents.description}`}
                         </div>
                         <div className="times">
-                            {`Event starts at ${listOfEvents.starting_time} on ${listOfEvents.starting_day}`}
+                            {`Event starts at ${listOfEvents.startingTime} on ${listOfEvents.startingDay}`}
                         </div>
                         <div className="dates">
-                            {`Event ends at ${listOfEvents.ending_time} on ${listOfEvents.ending_day}`}
+                            {`Event ends at ${listOfEvents.endingTime} on ${listOfEvents.endingDay}`}
                         </div>
                         <div className="number">
-                            {`Phone number ${listOfEvents.phone_number}`}
+                            {`Phone number ${listOfEvents.phoneNumber}`}
                         </div>
                         {!this.state.edit ? <>{this.props.text}</> :
                     <div>
@@ -82,7 +82,7 @@ export default class List extends Component {
                     <input onChange={(e) => this.handleChange(e, 'endingTime')} placeholder='Ending Time' type="text" />
                     <input onChange={(e) => this.handleChange(e, 'startingDate')} placeholder='Starting Date' type="text" />
                     <input onChange={(e) => this.handleChange(e, 'endingDate')} placeholder='Ending Date' type="text" />
-                    <input onChange={(e) => this.handleChange(e, 'number')} placeholder='number' type="text" />
+                    <input onChange={(e) => this.handleChange(e, 'phoneNumber')} placeholder='number' type="text" />
                     <button>Submit</button>
                     </div>}
                         <button onClick={() => this.toggleEdit()}>Edit</button>

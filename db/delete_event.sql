@@ -1,2 +1,2 @@
 DELETE FROM user_events 
-WHERE event_id = $1 AND user_id = $2;
+WHERE user_id = $2 AND event_id = $1;
