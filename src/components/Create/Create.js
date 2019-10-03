@@ -12,11 +12,11 @@ export default class Create extends Component {
         this.state = {
             title: '',
             description: '',
-            startingTime: '',
-            endingTime: '',
-            startingDay: '',
-            endingDay: '',
-            phoneNumber: '',
+            startingtime: '',
+            endingtime: '',
+            startingday: '',
+            endingday: '',
+            phonenumber: '',
             view: false
         }
     }
@@ -36,11 +36,11 @@ export default class Create extends Component {
             payload: {
             title: this.state.title,
             description: this.state.description,
-            startingTime: this.state.startingTime,
-            endingTime: this.state.endingTime,
-            startingDay: this.state.startingDay,
-            endingDay: this.state.endingDay,
-            phoneNumber: this.state.phoneNumber
+            startingtime: this.state.startingtime,
+            endingtime: this.state.endingtime,
+            startingday: this.state.startingday,
+            endingday: this.state.endingday,
+            phonenumber: this.state.phonenumber
             }
         })
     }
@@ -52,11 +52,11 @@ export default class Create extends Component {
                 <div>Title</div>
                 <input onChange={(e) => this.handleChange(e, 'title')}  type="text" placeholder='Title of the event'/>
                 <input onChange={(e) => this.handleChange(e, 'description')}  type="text" placeholder='Description of the event'/>
-                <input onChange={(e) => this.handleChange(e, 'startingDay')}  type="date" min="2019-10-01" max="2019-12-31" name="trip-start"/>
-                <input onChange={(e) => this.handleChange(e, 'startingTime')}  type="time" placeholder='Time the event will end'/>
-                <input onChange={(e) => this.handleChange(e, 'endingDay')}  type="date" min="2019-10-01" max="2019-12-31" name="trip-start"/>
-                <input onChange={(e) => this.handleChange(e, 'endingTime')}  type="time" placeholder='Time the event will end'/>
-                <input onChange={(e) => this.handleChange(e, 'phoneNumber')} placeholder='Phone number' type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"required/>
+                <input onChange={(e) => this.handleChange(e, 'startingday')}  type="date" min="2019-10-01" max="2019-12-31" name="trip-start"/>
+                <input onChange={(e) => this.handleChange(e, 'startingtime')}  type="time" placeholder='Time the event will end'/>
+                <input onChange={(e) => this.handleChange(e, 'endingday')}  type="date" min="2019-10-01" max="2019-12-31" name="trip-start"/>
+                <input onChange={(e) => this.handleChange(e, 'endingtime')}  type="time" placeholder='Time the event will end'/>
+                <input onChange={(e) => this.handleChange(e, 'phonenumber')} placeholder='Phone number' type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"required/>
             </div>
             {this.state.view 
             ? (
@@ -68,13 +68,13 @@ export default class Create extends Component {
                     {`Description ${this.state.description}`}
                 </div>
                 <div className="times">
-                    {`Event starts at ${this.state.startingTime} on ${this.state.startingDay}`}
+                    {`Event starts at ${this.state.startingtime} on ${this.state.startingday}`}
                 </div>
                 <div className="dates">
-                    {`Event ends at ${this.state.endingTime} on ${this.state.endingDay}`}
+                    {`Event ends at ${this.state.endingtime} on ${this.state.endingday}`}
                 </div>
                 <div className="number">
-                    {`Phone number ${this.state.phoneNumber}`}
+                    {`Phone number ${this.state.phonenumber}`}
                 </div>
                 <button onClick={() => this.toggleView()}>Close View</button>
             </div>

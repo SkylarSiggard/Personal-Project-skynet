@@ -7,17 +7,17 @@ module.exports = {
     },
     addEvent: async (req, res) => {
         const db = req.app.get('db')
-        const {title, description, startingDay, endingDay, startingTime, endingTime, phoneNumber} = req.body
+        const {title, description, startingday, endingday, startingtime, endingtime, phonenumber} = req.body
         const {userId} = req.session.user
-        const userEvents = await db.add_user_event([title, description, startingDay, endingDay, startingTime, endingTime, phoneNumber, userId])
+        const userEvents = await db.add_user_event([title, description, startingday, endingday, startingtime, endingtime, phonenumber, userId])
         return res.status(200).send(userEvents)
     },
     updateEvent: async (req, res) => {
         const db = req.app.get('db')
-        const {title, description, startingDay, endingDay, startingTime, endingTime, phoneNumber} = req.body
+        const {title, description, startingday, endingday, startingtime, endingtime, phonenumber} = req.body
         const {userId} = req.session.user
         const {event_id} = req.params
-        const userEvents = await db.update_user_event({userId, event_id, title, description, startingDay, endingDay, startingTime, endingTime, phoneNumber})
+        const userEvents = await db.update_user_event({userId, event_id, title, description, startingday, endingday, startingtime, endingtime, phonenumber})
         return res.status(200).send(userEvents)
     },
     deleteEvent: async (req, res) => {

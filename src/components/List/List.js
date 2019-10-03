@@ -15,11 +15,11 @@ export default class List extends Component {
             edit: false,
             title: '',
             description: '',
-            startingTime: '',
-            endingTime: '',
-            startingDay: '',
-            endingDay: '',
-            phoneNumber: ''
+            startingtime: '',
+            endingtime: '',
+            startingday: '',
+            endingday: '',
+            phonenumber: ''
         }
     }
     componentDidMount() {
@@ -66,23 +66,23 @@ export default class List extends Component {
                             {`Description ${listOfEvents.description}`}
                         </div>
                         <div className="times">
-                            {`Event starts at ${listOfEvents.startingTime} on ${listOfEvents.startingDay}`}
+                            {`Event starts at ${listOfEvents.startingtime} on ${listOfEvents.startingday}`}
                         </div>
                         <div className="dates">
-                            {`Event ends at ${listOfEvents.endingTime} on ${listOfEvents.endingDay}`}
+                            {`Event ends at ${listOfEvents.endingtime} on ${listOfEvents.endingday}`}
                         </div>
                         <div className="number">
-                            {`Phone number ${listOfEvents.phoneNumber}`}
+                            {`Phone number ${listOfEvents.phonenumber}`}
                         </div>
                         {!this.state.edit ? <>{this.props.text}</> :
                     <div>
                     <input onChange={(e) => this.handleChange(e, 'title')} placeholder="title" type="text" />
                     <input onChange={(e) => this.handleChange(e, 'description')} placeholder='Description' type="text" />
-                    <input onChange={(e) => this.handleChange(e, 'startingTime')} placeholder='Starting Time' type="text" />
-                    <input onChange={(e) => this.handleChange(e, 'endingTime')} placeholder='Ending Time' type="text" />
-                    <input onChange={(e) => this.handleChange(e, 'startingDate')} placeholder='Starting Date' type="text" />
-                    <input onChange={(e) => this.handleChange(e, 'endingDate')} placeholder='Ending Date' type="text" />
-                    <input onChange={(e) => this.handleChange(e, 'phoneNumber')} placeholder='number' type="text" />
+                    <input onChange={(e) => this.handleChange(e, 'startingtime')} placeholder='Starting Time' type="text" />
+                    <input onChange={(e) => this.handleChange(e, 'endingtime')} placeholder='Ending Time' type="text" />
+                    <input onChange={(e) => this.handleChange(e, 'startingdate')} placeholder='Starting Date' type="text" />
+                    <input onChange={(e) => this.handleChange(e, 'endingdate')} placeholder='Ending Date' type="text" />
+                    <input onChange={(e) => this.handleChange(e, 'phonenumber')} placeholder='number' type="text" />
                     <button>Submit</button>
                     </div>}
                         <button onClick={() => this.toggleEdit()}>Edit</button>
