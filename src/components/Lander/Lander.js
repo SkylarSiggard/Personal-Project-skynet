@@ -59,7 +59,7 @@ class Lander extends Component {
             swal.fire({type: 'error', text: 'Wrong password or wrong email'})
             if (res.data.user) {
                 this.updateUser(res.data.user)
-                this.props.history.push('/list')
+                this.props.history.push('/create')
                 swal.fire({type: 'success', text: res.data.message})
             }
         } catch (error) {  

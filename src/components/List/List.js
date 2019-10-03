@@ -2,24 +2,34 @@ import React, {Component} from 'react'
 import Header from './../Header/Header'
 import './list.scss'
 import {Link} from 'react-router-dom'
-import store from './../../store'
+import store, {GET_EVENTS} from './../../store'
+import axios from 'axios'
+
 
 export default class List extends Component {
     constructor() {
         super()
         const reduxState = store.getState()
-        console.log('list array', reduxState.listOfEvents)
+        console.log('list of events', reduxState.listOfEvents)
         this.state = {
             listOfEvents: reduxState.listOfEvents,
             edit: false,
             title: '',
             description: '',
-            startingTime: '',
-            endingTime: '',
-            startingDate: '',
-            endingDate: '',
-            number: ''
+            starting_time: '',
+            ending_time: '',
+            starting_day: '',
+            ending_day: '',
+            phone_number: ''
         }
+    }
+    componentDidMount() {
+        axios.get('/api/events').then(res => {
+            store.dispatch({
+                type: GET_EVENTS,
+                payload: res.data
+            })
+        })
     }
     handleChange = (e, key) => {
         this.setState({
@@ -33,7 +43,7 @@ export default class List extends Component {
     }
     render() {
         return(
-        <div className="list">
+            <div className="list">
             <Header history={this.props.history}/>
             {
                 this.state.listOfEvents.length ? (
@@ -47,13 +57,13 @@ export default class List extends Component {
                             {`Description ${listOfEvents.description}`}
                         </div>
                         <div className="times">
-                            {`Event starts ${listOfEvents.startingDate} and ends at ${listOfEvents.startingTime}`}
+                            {`Event starts at ${listOfEvents.starting_time} on ${listOfEvents.starting_day}`}
                         </div>
                         <div className="dates">
-                            {`Day the event starts ${listOfEvents.endingDate} and ends at ${listOfEvents.endingTime}`}
+                            {`Event ends at ${listOfEvents.ending_time} on ${listOfEvents.ending_day}`}
                         </div>
                         <div className="number">
-                            {`Phone number ${listOfEvents.number}`}
+                            {`Phone number ${listOfEvents.phone_number}`}
                         </div>
                         {!this.state.edit ? <>{this.props.text}</> :
                     <div>
