@@ -69,6 +69,7 @@ export default class List extends Component {
                 this.state.listOfEvents.map(listOfEvents => {
                     return (
                     <div className='items'>
+                        <div className='events'>
                         <div className="title">
                             {`Event name ${listOfEvents.title}`}
                         </div>
@@ -84,6 +85,7 @@ export default class List extends Component {
                         <div className="number">
                             {`Phone number ${listOfEvents.phonenumber}`}
                         </div>
+                        </div>
                         {!this.state.edit ? <>{this.props.text}</> :
                     <div>
                         <input onChange={(e) => this.handleChange(e, 'title')}  type="text" placeholder='Title of the event'/>
@@ -95,8 +97,10 @@ export default class List extends Component {
                         <input onChange={(e) => this.handleChange(e, 'phonenumber')} placeholder='Phone number' type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"required/>
                     <button onClick={() => this.handleEdit(listOfEvents.event_id)}>Submit</button>
                     </div>}
+                        <div class='buttons'>
                         <button onClick={() => this.toggleEdit()}>Edit</button>
                         <button onClick={() => this.handleDelete(listOfEvents.event_id)}>Delete</button>
+                        </div>
                     </div>
                     )
                 })

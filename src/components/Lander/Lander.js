@@ -71,8 +71,10 @@ class Lander extends Component {
         <div className="lander">
             {!this.state.register
             ? (
-            <div className="login">
-                <div>Login in here</div>
+                
+                <div>
+                <div className='titles'>Login in here</div>
+                    <div className='login'>
                 <div>Login Email</div>
                 <input onChange={(e) => this.handleChange(e, 'email')} type="text" placeholder='email'/>
                 <div>Your Password</div>
@@ -81,10 +83,12 @@ class Lander extends Component {
                     <button onClick={() => this.toggleChange()}>Register</button>
                     <button onClick={() => this.login()}>Login</button>
                 </div>
+                    </div>
             </div>
             ) : (
+                <div className='titles'>
+                <div>Create an account</div>
                 <div className="login">
-                    <div>Create an account</div>
                     <div>Your Email</div>
                     <input onChange={(e) => this.handleChange(e, 'email')} type="text" placeholder='email'/>
                     <div>Set a password</div>
@@ -95,6 +99,7 @@ class Lander extends Component {
                 <div>
                     <button onClick={() => this.toggleChange()}>Back to Login</button>
                     <button onClick={() => this.register()}>Register</button>
+                </div>
                 </div>
             </div>
             )}
