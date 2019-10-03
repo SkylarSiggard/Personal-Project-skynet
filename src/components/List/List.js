@@ -30,7 +30,9 @@ export default class List extends Component {
         console.log('list of events', this.state.listOfEvents)
     }
     handleDelete = async (event_id) => {
-    axios.delete(`/api/events/${event_id}`)
+        console.log('at delete', event_id)
+        axios.delete(`/api/events/${event_id}`)
+        this.componentDidMount()
     } 
     handleChange = (e, key) => {
         this.setState({

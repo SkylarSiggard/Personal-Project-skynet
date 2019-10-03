@@ -24,8 +24,8 @@ app.delete('/auth/logout', authCtrl.logout)
 //event endpoints
 app.get('/api/events', eventCtrl.getUserEvents)
 app.post('/api/events', eventCtrl.addEvent)
-app.put('/api/events/:id', eventCtrl.updateEvent)
-app.delete('/api/events/:id', eventCtrl.deleteEvent)
+app.put('/api/events/:event_id', eventCtrl.updateEvent)
+app.delete('/api/events/:event_id', eventCtrl.deleteEvent)
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db) 

@@ -21,11 +21,11 @@ select * from user_info;
 select * from user_events;
 
 
-INSERT INTO user_events (title, description, startingday,
-endingday, startingtime, endingtime, phonenumber, user_id)
-VALUES ('play', 'play game', '10-2-19', '10-3-12', '12:10pm', '12:20pm', '8015570544', 1);
+-- INSERT INTO user_events (title, description, startingday,
+-- endingday, startingtime, endingtime, phonenumber, user_id)
+-- VALUES ('play', 'play game', '10-2-19', '10-3-12', '12:10pm', '12:20pm', '8015570544', 1);
 
 
 
-select * from user_info;
-select * from user_events;
+-- select * from user_info;
+-- select * from user_events;

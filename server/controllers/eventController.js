@@ -24,8 +24,7 @@ module.exports = {
         const db = req.app.get('db')
         const {userId} = req.session.user
         const {event_id} = req.params
-        db.delete_event([userId, event_id]).then(result => {
-            res.status(200).send(result)
-        })
+        const result = await db.delete_event([userId, event_id])
+        res.status(200).send(result)
     }
 }
