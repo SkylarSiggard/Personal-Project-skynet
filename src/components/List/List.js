@@ -76,7 +76,7 @@ export default class List extends Component {
                             {`Description ${listOfEvents.description}`}
                         </div>
                         <div className="times">
-                            {`Event starts at ${listOfEvents.startingtime} on ${listOfEvents.startingday}`}
+                            {`Event starts at ${listOfEvents.startingtime.toString()} on ${listOfEvents.startingday}`}
                         </div>
                         <div className="dates">
                             {`Event ends at ${listOfEvents.endingtime} on ${listOfEvents.endingday}`}

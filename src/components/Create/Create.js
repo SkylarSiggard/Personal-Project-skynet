@@ -17,7 +17,8 @@ export default class Create extends Component {
             startingday: '',
             endingday: '',
             phonenumber: '',
-            view: false
+            view: false,
+            starting: ''
         }
     }
     handleChange = (e, key) => {
@@ -71,7 +72,11 @@ export default class Create extends Component {
                 <div>Title</div>
                 <input onChange={(e) => this.handleChange(e, 'title')}  type="text" placeholder='Title of the event'/>
                 <input onChange={(e) => this.handleChange(e, 'description')}  type="text" placeholder='Description of the event'/>
-                <input onChange={(e) => this.handleChange(e, 'startingday')}  type="date" min="2019-10-01" max="2019-12-31" name="trip-start"/>
+
+                <input onChange={(e) => this.handleChange(e, 'startingday')}  type="date-local" min="2019-10-01" max="2019-12-31" name="trip-start"/>
+
+                {/* <input onChange={(e) => this.handleChange(e, 'startingday')} type="datetime-local" min="2019-10-01T00:00" max="2020-10-01T00:00"/> */}
+
                 <input onChange={(e) => this.handleChange(e, 'startingtime')}  type="time" placeholder='Time the event will end'/>
                 <input onChange={(e) => this.handleChange(e, 'endingday')}  type="date" min="2019-10-01" max="2019-12-31" name="trip-start"/>
                 <input onChange={(e) => this.handleChange(e, 'endingtime')}  type="time" placeholder='Time the event will end'/>
