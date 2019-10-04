@@ -5,6 +5,11 @@ const massive = require('massive')
 const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env
 const authCtrl = require('./controllers/authController')
 const eventCtrl = require('./controllers/eventController')
+const moment = require('moment');
+const CronJob = require('cron').CronJob;
+const momentTimeZone = require('moment-timezone')
+const router = new express.Router()
+const twillioCtrl = require('./controllers/twilioController')
 
 const app = express()
 
@@ -26,6 +31,12 @@ app.get('/api/events', eventCtrl.getUserEvents)
 app.post('/api/events', eventCtrl.addEvent)
 app.put('/api/events/:event_id', eventCtrl.updateEvent)
 app.delete('/api/events/:event_id', eventCtrl.deleteEvent)
+//twillio 
+const getTimeZones = function() {
+    return momentTimeZone.tz.names()
+}
+// GET: /appointments/create
+app.get('/twillio/text',) 
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db) 

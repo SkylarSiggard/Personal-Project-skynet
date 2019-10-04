@@ -10,10 +10,14 @@
     "@y0c/react-datepicker": "^1.0.1",
     "axios": "^0.19.0",
     "bcryptjs": "^2.4.3",
+    "cron": "^1.7.2",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
     "massive": "^6.1.0",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.26",
+    "mongoose": "^5.7.3",
     "node-sass": "^4.12.0",
     "react": "^16.10.1",
     "react-datepicker": "^2.9.6",
@@ -23,7 +27,8 @@
     "react-scripts": "3.1.2",
     "redux": "^4.0.4",
     "styled-components": "^4.4.0",
-    "sweetalert2": "^8.18.0"
+    "sweetalert2": "^8.18.0",
+    "timezone": "^1.0.22"
   },
   "scripts": {
     "start": "react-scripts start",
