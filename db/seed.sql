@@ -11,21 +11,19 @@ CREATE TABLE user_events (
 	user_id INT REFERENCES user_info(user_id),
 	title varchar(30),
 	description varchar(300),
-	startingday date,
-	endingday date,
-	startingtime time,
-	endingtime time,
+	starting TIMESTAMP,
+	ending TIMESTAMP,
 	phonenumber varchar(10)
 );
 select * from user_info;
 select * from user_events;
 
 
--- INSERT INTO user_events (title, description, startingday,
--- endingday, startingtime, endingtime, phonenumber, user_id)
--- VALUES ('play', 'play game', '10-2-19', '10-3-12', '12:10pm', '12:20pm', '8015570544', 1);
+INSERT INTO user_events (title, description, starting,
+ending, phonenumber, user_id)
+VALUES ('play', 'play game', '10-2-19 12:10pm', '10-3-12 12:20pm', '8015570544', 1);
 
 
 
--- select * from user_info;
--- select * from user_events;
+select * from user_info;
+select * from user_events;

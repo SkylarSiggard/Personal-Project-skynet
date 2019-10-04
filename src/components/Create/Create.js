@@ -12,13 +12,10 @@ export default class Create extends Component {
         this.state = {
             title: '',
             description: '',
-            startingtime: '',
-            endingtime: '',
-            startingday: '',
-            endingday: '',
+            starting: '',
+            ending: '',
             phonenumber: '',
-            view: false,
-            starting: ''
+            view: false
         }
     }
     handleChange = (e, key) => {
@@ -37,29 +34,23 @@ export default class Create extends Component {
             payload: {
             title: this.state.title,
             description: this.state.description,
-            startingtime: this.state.startingtime,
-            endingtime: this.state.endingtime,
-            startingday: this.state.startingday,
-            endingday: this.state.endingday,
+            starting: this.state.starting,
+            ending: this.state.ending,
             phonenumber: this.state.phonenumber
             }
         })
         axios.post('/api/events', {
             title: this.state.title,
             description: this.state.description,
-            startingtime: this.state.startingtime,
-            endingtime: this.state.endingtime,
-            startingday: this.state.startingday,
-            endingday: this.state.endingday,
+            starting: this.state.starting,
+            ending: this.state.ending,
             phonenumber: this.state.phonenumber
             }).then(res => {
                 this.setState({
                     title: '',
             description: '',
-            startingtime: '',
-            endingtime: '',
-            startingday: '',
-            endingday: '',
+            starting: '',
+            ending: '',
             phonenumber: ''
                 })
             })
@@ -73,11 +64,8 @@ export default class Create extends Component {
                 <div>Title</div>
                 <input onChange={(e) => this.handleChange(e, 'title')}  type="text" placeholder='Title of the event'/>
                 <input onChange={(e) => this.handleChange(e, 'description')}  type="text" placeholder='Description of the event'/>
-                <input onChange={(e) => this.handleChange(e, 'startingday')}  type="date" min="2019-10-01" max="2020-12-31"/>
-                {/* <input onChange={(e) => this.handleChange(e, 'startingday')} type="datetime-local" min="2019-10-01T00:00" max="2020-10-01T00:00"/> */}
-                <input onChange={(e) => this.handleChange(e, 'startingtime')}  type="time" placeholder='Time the event will end'/>
-                <input onChange={(e) => this.handleChange(e, 'endingday')}  type="date" min="2019-10-01" max="2020-12-31"/>
-                <input onChange={(e) => this.handleChange(e, 'endingtime')}  type="time" placeholder='Time the event will end'/>
+                <input onChange={(e) => this.handleChange(e, 'starting')} type="datetime-local" min="2019-10-01T00:00" max="2020-10-01T00:00"/>
+                <input onChange={(e) => this.handleChange(e, 'ending')}  type="datetime-local" min="2019-10-01T00:00" max="2020-10-01T00:00"/>
                 <input onChange={(e) => this.handleChange(e, 'phonenumber')} placeholder='Phone number' type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"required/>
             </div>
             {this.state.view 
@@ -90,10 +78,10 @@ export default class Create extends Component {
                     {`Description ${this.state.description}`}
                 </div>
                 <div className="times">
-                    {`Event starts at ${this.state.startingtime} on ${this.state.startingday}`}
+                    {`Event starts at ${this.state.starting}`}
                 </div>
                 <div className="dates">
-                    {`Event ends at ${this.state.endingtime} on ${this.state.endingday}`}
+                    {`Event ends at ${this.state.ending}`}
                 </div>
                 <div className="number">
                     {`Phone number ${this.state.phonenumber}`}

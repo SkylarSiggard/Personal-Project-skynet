@@ -13,14 +13,33 @@
     justify-content: center;
     align-content: center;
 }
+@media (min-width: 1200px) {
+    .login {
+        min-width: 300px;
+        height: 200px;
+    }
+}
+@media (min-width: 800px) {
+    .login {
+        min-width: 600px;
+        height: 150px;
+    }
+}
+@media (min-width: 400px) {
+    .login {
+        min-width: 350px;
+        height: 150px;
+    }
+}
 .login {
     background: #abced4;
-    width: 30vw;
     height: 150px;
     margin: 50px;
     padding: 10px 0 0 10px;
     font-family: 'PT Serif', serif;
     font-size: 15px;
+    -webkit-box-shadow: 1px 3px 15px 18px rgba(0,0,0,0.54); 
+    box-shadow: 1px 3px 15px 18px rgba(0,0,0,0.54);
 }
 .titles {
     font-family: 'Mansalva', cursive;
