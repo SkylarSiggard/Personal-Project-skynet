@@ -28,7 +28,8 @@
     "redux": "^4.0.4",
     "styled-components": "^4.4.0",
     "sweetalert2": "^8.18.0",
-    "timezone": "^1.0.22"
+    "timezone": "^1.0.22",
+    "twilio": "^3.35.1"
   },
   "scripts": {
     "start": "react-scripts start",

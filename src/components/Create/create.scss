@@ -7,11 +7,12 @@
         linear-gradient(#eee .1em, transparent .1em);
         background-size: 100% 1.2em;
 }
-.creater-box {
-    height: 200px;
+.outer-box{
+    height: auto;
     width: 300px;
     background-color: #abced4;
     -webkit-box-shadow: 1px 3px 15px 5px rgba(0,0,0,0.54); 
     box-shadow: 1px 3px 15px 5px rgba(0,0,0,0.54);
     margin: 0 30% 0 30%; 
+    padding: 20px;
 }

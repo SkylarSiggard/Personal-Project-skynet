@@ -57,11 +57,11 @@ export default class Create extends Component {
     }
     render() {
         return(
-        <div>
+        <div className='create'>
             <Header history={this.props.history}/>
-            <div className='create'>
-            <div  className="creater-box">
                 <div>Title</div>
+                <div className="outer-box">
+            <div  className="creater-box">
                 <input onChange={(e) => this.handleChange(e, 'title')}  type="text" placeholder='Title of the event'/>
                 <input onChange={(e) => this.handleChange(e, 'description')}  type="text" placeholder='Description of the event'/>
                 <input onChange={(e) => this.handleChange(e, 'starting')} type="datetime-local" min="2019-10-01T00:00" max="2020-10-01T00:00"/>
