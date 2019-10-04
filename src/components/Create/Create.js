@@ -60,7 +60,7 @@ export default class Create extends Component {
         <div>
             <Header history={this.props.history}/>
             <div className='create'>
-            <div className="creater-box">
+            <div  className="creater-box">
                 <div>Title</div>
                 <input onChange={(e) => this.handleChange(e, 'title')}  type="text" placeholder='Title of the event'/>
                 <input onChange={(e) => this.handleChange(e, 'description')}  type="text" placeholder='Description of the event'/>
@@ -91,9 +91,9 @@ export default class Create extends Component {
             ) : (
                 <button onClick={() => this.toggleView()}>View the event</button>
                 )}
-                </div>
             <div>
             <Link to='/list'><button onClick={() => this.create()}>Submit</button></Link>
+                </div>
                 </div>
         </div>
         )

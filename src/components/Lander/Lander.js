@@ -98,7 +98,7 @@ class Lander extends Component {
                         <input onChange={(e) => this.handleChange(e, 'password2')} type="text" placeholder='repeat password'/>
                 <div>
                     <button onClick={() => this.toggleChange()}>Back to Login</button>
-                    <button onClick={() => this.register()}>Register</button>
+                    <button className='regbutton' onClick={() => this.register()}>Register</button>
                 </div>
                 </div>
             </div>

@@ -12,9 +12,12 @@
 }
 
 .events {
-    background-color: aqua;
     width: auto;
     margin: 20px;
+    padding: 10px;
+    background: #abced4;
+    -webkit-box-shadow: 1px 3px 15px 5px rgba(0,0,0,0.54); 
+    box-shadow: 1px 3px 15px 5px rgba(0,0,0,0.54);
 }
 .buttons {
     height: 20px;

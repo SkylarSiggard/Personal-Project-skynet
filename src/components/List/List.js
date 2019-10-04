@@ -81,7 +81,6 @@ export default class List extends Component {
                         <div className="number">
                             {`Phone number ${listOfEvents.phonenumber}`}
                         </div>
-                        </div>
                         {!this.state.edit ? <>{this.props.text}</> :
                     <div>
                         <input onChange={(e) => this.handleChange(e, 'title')}  type="text" placeholder='Title of the event'/>
@@ -95,6 +94,7 @@ export default class List extends Component {
                         <button onClick={() => this.toggleEdit()}>Edit</button>
                         <button onClick={() => this.handleDelete(listOfEvents.event_id)}>Delete</button>
                         </div>
+                    </div>
                     </div>
                     )
                 })

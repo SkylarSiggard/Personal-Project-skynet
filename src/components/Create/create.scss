@@ -1,13 +1,16 @@
 .create {
-    display: flex;
-    justify-items: center;
-    align-content: center;
-    height: 300px;
-    background-color: aquamarine;
-    width: 100%;
+        height: 100vh;
+        width: 100%;
+        background-color: #fff;
+        background-image:
+        linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+        linear-gradient(#eee .1em, transparent .1em);
+        background-size: 100% 1.2em;
 }
 .creater-box {
-    height: 500px;
-    width: 200px;
-    background-color: aquamarine;
+    height: 200px;
+    width: 300px;
+    background-color: #abced4;
+    -webkit-box-shadow: 1px 3px 15px 5px rgba(0,0,0,0.54); 
+    box-shadow: 1px 3px 15px 5px rgba(0,0,0,0.54);
 }
