@@ -15,7 +15,9 @@ export default class Create extends Component {
             starting: '',
             ending: '',
             phonenumber: '',
-            view: false
+            view: false,
+            submitting: false,
+            error: false
         }
     }
     handleChange = (e, key) => {
@@ -48,10 +50,10 @@ export default class Create extends Component {
             }).then(res => {
                 this.setState({
                     title: '',
-            description: '',
-            starting: '',
-            ending: '',
-            phonenumber: ''
+                    description: '',
+                    starting: '',
+                    ending: '',
+                    phonenumber: ''
                 })
             })
     }

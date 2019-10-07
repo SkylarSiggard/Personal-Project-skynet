@@ -2,16 +2,23 @@ require('dotenv').config()
 const express = require('express')
 const session = require('express-session')
 const massive = require('massive')
-const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING, TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_PHONE_NUMBER} = process.env
+const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env
 const authCtrl = require('./controllers/authController')
 const eventCtrl = require('./controllers/eventController')
-const twillio = require('twilio')
-const client = new twillio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN),
-cronJob = require('cron').cronJob
+const client = require('twilio')(
+    process.env.TWILIO_ACCOUNT_SID, 
+    process.env.TWILIO_AUTH_TOKEN,
+    process.env.TWILIO_PHONE_NUMBER
+)
+const bodyParser = require('body-parser')
+const pino = require('express-pino-logger')
 
 const app = express()
 
 app.use(express.json())
+// app.use(bodyParser.urlencoded({extended: false}))
+// app.use(bodyParser.json())
+// app.use(pino)
 app.use(session({
     resave: false,
     saveUninitialized: false,
@@ -30,6 +37,23 @@ app.post('/api/events', eventCtrl.addEvent)
 app.put('/api/events/:event_id', eventCtrl.updateEvent)
 app.delete('/api/events/:event_id', eventCtrl.deleteEvent)
 //twillio 
+app.post('/api/messages', (req, res) => {
+    const {phonenumber, title, starting, ending, description} = req.body
+    res.header('Content-Type', 'application/json');
+    client.messages
+    .create({
+        from: process.env.TWILIO_PHONE_NUMBER,
+        to: phonenumber,
+        body: `${title} ${description} event starts at ${starting} and ends ${ending}`
+    })
+    .then(() => {
+        res.send(JSON.stringify({ success: true }))
+    }) 
+    .catch(err => {
+        console.log(err)
+        res.send(JSON.stringify({ success: false }))
+    })
+}) 
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db) 
