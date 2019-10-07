@@ -14,7 +14,8 @@
 
 .events {
     height: auto;
-    width: 400px;
+    max-width: 400px;
+    width: auto;
     margin: 20px;
     padding: 10px;
     background: #abced4;
@@ -24,29 +25,7 @@
 .buttons {
     height: 20px;
 }
-// @media (min-width: 1200px) {
-//     .items {
-//         margin: 20px;
-//         min-width: 300px;
-//         height: 200px;
-//     }
-// }
-// @media (min-width: 800px) {
-//     .items {
-//         display: flex;
-//         flex-wrap: wrap;
-//         align-content: flex-start;
-//         margin: 100px;
-//         min-width: 600px;
-//         height: 150px;
-//     }
-// }
-// @media (min-width: 400px) {
-//     .items {
-//         min-width: 350px;
-//         height: 150px;
-//     }
-// }
+
 .add-to-list {
     height: 100px;
     width: 100px;
