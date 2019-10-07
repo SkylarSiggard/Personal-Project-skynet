@@ -52,5 +52,14 @@
     background: none;
     border: none;
     border-radius: 30;
-    
+    cursor: pointer;
+}
+.regbutton:hover {
+    color: blue;
+}
+.log {
+    margin: 10px;
+}
+.enter {
+    border-radius: 30px;
 }

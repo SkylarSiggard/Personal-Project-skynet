@@ -38,17 +38,17 @@ class Lander extends Component {
     register = async () => {
         const {email, password, password2} = this.state
         if (password !== password2) {
-            swal.fire({type: 'error', text: 'Passwords dont match'})
+            swal.fire({type: 'error', text: 'Passwords dont match' , showCancelButton: false, timer: 1500})
         } else {
             try {
                 const res = await axios.post('/auth/register', {email, password})
                 if (res.data.user) {
-                    swal.fire({type: 'success', text: res.data.message})
+                    swal.fire({type: 'success', text: res.data.message, showCancelButton: false, timer: 1500})
                     this.updateUser(res.data.user)
                     this.props.history.push('/list')
                 } 
             } catch (error) {
-                swal.fire({type: 'error', text: 'Email is already in use'})
+                swal.fire({type: 'error', text: 'Email is already in use', showCancelButton: false, timer: 1500})
             }
         } 
     }
@@ -56,14 +56,14 @@ class Lander extends Component {
         const {email, password} = this.state
         try {
             const res = await axios.post('/auth/login', {email, password})
-            swal.fire({type: 'error', text: 'Wrong password or wrong email'})
+            swal.fire({type: 'error', text: 'Wrong password or wrong email' , showCancelButton: false, timer: 1500})
             if (res.data.user) {
                 this.updateUser(res.data.user)
                 this.props.history.push('/list')
-                swal.fire({type: 'success', text: res.data.message})
+                swal.fire({type: 'success', text: res.data.message , showCancelButton: false, timer: 1000})
             }
         } catch (error) {  
-            swal.fire({type: 'error', text: 'Wrong password or wrong email'})
+            swal.fire({type: 'error', text: 'Wrong password or wrong email' , showCancelButton: false, timer: 1500})
         }
     }
     render() {
@@ -80,8 +80,10 @@ class Lander extends Component {
                 <div>Your Password</div>
                 <input onChange={(e) => this.handleChange(e, 'password')} type="text" placeholder='password'/>
                 <div>
-                    <button onClick={() => this.toggleChange()}>Register</button>
-                    <button onClick={() => this.login()}>Login</button>
+                    <div className="log">
+                        <button className='regbutton'  onClick={() => this.toggleChange()}>Register</button>
+                        <button className='enter' onClick={() => this.login()}>Login</button>
+                    </div>
                 </div>
                     </div>
             </div>
@@ -97,8 +99,10 @@ class Lander extends Component {
                     </div>
                         <input onChange={(e) => this.handleChange(e, 'password2')} type="text" placeholder='repeat password'/>
                 <div>
-                    <button onClick={() => this.toggleChange()}>Back to Login</button>
-                    <button className='regbutton' onClick={() => this.register()}>Register</button>
+                    <div className="log">
+                        <button className='regbutton' onClick={() => this.toggleChange()}>Back to Login</button>
+                        <button className='enter' onClick={() => this.register()}>Register</button>
+                    </div>
                 </div>
                 </div>
             </div>

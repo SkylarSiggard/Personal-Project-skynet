@@ -103,13 +103,13 @@ export default class Create extends Component {
                 <div className="number">
                     {`Phone number: ${this.state.phonenumber}`}
                 </div>
+                <Link to='/list'><button onClick={() => this.create()}>Submit</button></Link>
                 <button onClick={() => this.toggleView()}>Close View</button>
             </div>
             ) : (
                 <button onClick={() => this.toggleView()}>View the event</button>
                 )}
             <div>
-            <Link to='/list'><button onClick={() => this.create()}>Submit</button></Link>
                 </div>
                 </div>
         </div>

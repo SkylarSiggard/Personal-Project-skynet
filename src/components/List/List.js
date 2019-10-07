@@ -84,8 +84,8 @@ export default class List extends Component {
                         </div>
                         {!this.state.edit ? <>{this.props.text}</> :
                     <div>
-                        <input onChange={(e) => this.handleChange(e, 'title')}  type="text" placeholder='Title of the event'/>
-                        <input onChange={(e) => this.handleChange(e, 'description')}  type="text" placeholder='Description of the event'/>
+                        <input onChange={(e) => this.handleChange(e, 'title')}  type="text" placeholder='Title of the event' maxLength="30"/>
+                        <input onChange={(e) => this.handleChange(e, 'description')}  type="text" placeholder='Description of the event' minLength="300"/>
                         <input onChange={(e) => this.handleChange(e, 'starting')} type="datetime-local" min="2019-10-01T00:00" max="2020-10-01T00:00"/>
                         <input onChange={(e) => this.handleChange(e, 'ending')}  type="datetime-local" min="2019-10-01T00:00" max="2020-10-01T00:00"/>
                         <input onChange={(e) => this.handleChange(e, 'phonenumber')} placeholder='Phone number' type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"required/>
@@ -102,7 +102,7 @@ export default class List extends Component {
                 ) : null
             }
             {/* <h1>{this.state.products.length ? this.state.products[0].name : null}</h1> */}
-            <Link to='/create'><button>Add to list</button></Link>
+            <Link to='/create'><button className='add-to-list'>Add to list</button></Link>
         </div>
         )
     }

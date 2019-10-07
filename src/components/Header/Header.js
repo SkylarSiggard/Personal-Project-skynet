@@ -11,7 +11,7 @@ export default class Header extends Component {
     logout = async () => {
         const res = await axios.delete('/auth/logout')
         this.props.history.push('/')
-        swal.fire({type: 'success', text: res.data.message})
+        swal.fire({type: 'success', text: res.data.message, showCancelButton: false, timer: 1000})
     }
     render() {
         return (
