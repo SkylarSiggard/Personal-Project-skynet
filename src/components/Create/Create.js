@@ -89,10 +89,10 @@ export default class Create extends Component {
             ? (
                 <div className="viewer-box">
                 <div className="title">
-                    {`Event name ${this.state.title}`}
+                    {`Event name: ${this.state.title}`}
                 </div>
                 <div className="description">
-                    {`Description ${this.state.description}`}
+                    {`Description: ${this.state.description}`}
                 </div>
                 <div className="times">
                     {`Event starts at ${moment(this.state.starting).format('llll')}`}
@@ -101,7 +101,7 @@ export default class Create extends Component {
                     {`Event ends at ${moment(this.state.ending).format('llll')}`}
                 </div>
                 <div className="number">
-                    {`Phone number ${this.state.phonenumber}`}
+                    {`Phone number: ${this.state.phonenumber}`}
                 </div>
                 <button onClick={() => this.toggleView()}>Close View</button>
             </div>

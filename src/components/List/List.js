@@ -68,10 +68,10 @@ export default class List extends Component {
                     <div className='items'>
                         <div className='events'>
                         <div className="title">
-                            {`Event name ${listOfEvents.title}`}
+                            {`Event name: ${listOfEvents.title}`}
                         </div>
                         <div className="description">
-                            {`Description ${listOfEvents.description}`}
+                            {`Description: ${listOfEvents.description}`}
                         </div>
                         <div className="times">
                             {`Event starts at ${moment(listOfEvents.starting).format("llll")}`}
@@ -80,7 +80,7 @@ export default class List extends Component {
                             {`Event ends at ${moment(listOfEvents.ending).format("llll")}`}
                         </div>
                         <div className="number">
-                            {`Phone number ${listOfEvents.phonenumber}`}
+                            {`Phone number: ${listOfEvents.phonenumber}`}
                         </div>
                         {!this.state.edit ? <>{this.props.text}</> :
                     <div>

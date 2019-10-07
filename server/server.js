@@ -44,7 +44,7 @@ app.post('/api/messages', (req, res) => {
     .create({
         from: process.env.TWILIO_PHONE_NUMBER,
         to: phonenumber,
-        body: `${title} ${description} event starts at ${starting} and ends ${ending}`
+        body: `Event name: ${title}. Description: ${description}. Event starts at ${starting} and ends ${ending}.`
     })
     .then(() => {
         res.send(JSON.stringify({ success: true }))
