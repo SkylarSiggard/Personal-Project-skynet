@@ -4,6 +4,7 @@ import './list.scss'
 import {Link} from 'react-router-dom'
 import store from './../../store'
 import axios from 'axios'
+import moment from 'moment'
 
 export default class List extends Component {
     constructor() {
@@ -73,10 +74,10 @@ export default class List extends Component {
                             {`Description ${listOfEvents.description}`}
                         </div>
                         <div className="times">
-                            {`Event starts at ${listOfEvents.starting}`}
+                            {`Event starts at ${moment(listOfEvents.starting).format("llll")}`}
                         </div>
                         <div className="dates">
-                            {`Event ends at ${listOfEvents.ending}`}
+                            {`Event ends at ${moment(listOfEvents.ending).format("llll")}`}
                         </div>
                         <div className="number">
                             {`Phone number ${listOfEvents.phonenumber}`}

@@ -4,7 +4,7 @@ import './create.scss'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import store, {ADD_EVENT} from './../../store'
-
+import moment from 'moment'
 
 export default class Create extends Component {
     constructor() {
@@ -59,8 +59,8 @@ export default class Create extends Component {
         axios.post('/api/messages', {
             title: this.state.title,
             description: this.state.description,
-            starting: this.state.starting,
-            ending: this.state.ending,
+            starting: moment(this.state.starting).format('llll'),
+            ending: moment(this.state.ending).format('llll'),
             phonenumber: this.state.phonenumber
             }).then(res => {
                 this.setState({
@@ -81,7 +81,7 @@ export default class Create extends Component {
             <div  className="creater-box">
                 <input onChange={(e) => this.handleChange(e, 'title')}  type="text" placeholder='Title of the event'/>
                 <input onChange={(e) => this.handleChange(e, 'description')}  type="text" placeholder='Description of the event'/>
-                <input onChange={(e) => this.handleChange(e, 'starting')} type="datetime-local" min="2019-10-01T00:00" max="2020-10-01T00:00"/>
+                <input onChange={(e) => this.handleChange(e, 'starting')} type="datetime-local" min="2019-10-01T00:00" max="2020-10-01T00:00" pattern='llll'/>
                 <input onChange={(e) => this.handleChange(e, 'ending')}  type="datetime-local" min="2019-10-01T00:00" max="2020-10-01T00:00"/>
                 <input onChange={(e) => this.handleChange(e, 'phonenumber')} placeholder='+1(801)123-4567' type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"required/>
             </div>
@@ -95,10 +95,10 @@ export default class Create extends Component {
                     {`Description ${this.state.description}`}
                 </div>
                 <div className="times">
-                    {`Event starts at ${this.state.starting}`}
+                    {`Event starts at ${moment(this.state.starting).format('llll')}`}
                 </div>
                 <div className="dates">
-                    {`Event ends at ${this.state.ending}`}
+                    {`Event ends at ${moment(this.state.ending).format('llll')}`}
                 </div>
                 <div className="number">
                     {`Phone number ${this.state.phonenumber}`}
