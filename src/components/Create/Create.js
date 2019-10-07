@@ -56,6 +56,21 @@ export default class Create extends Component {
                     phonenumber: ''
                 })
             })
+        axios.post('/api/messages', {
+            title: this.state.title,
+            description: this.state.description,
+            starting: this.state.starting,
+            ending: this.state.ending,
+            phonenumber: this.state.phonenumber
+            }).then(res => {
+                this.setState({
+                    title: '',
+                    description: '',
+                    starting: '',
+                    ending: '',
+                    phonenumber: ''
+                })
+            })
     }
     render() {
         return(

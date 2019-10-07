@@ -13,7 +13,7 @@ CREATE TABLE user_events (
 	description varchar(300),
 	starting TIMESTAMP,
 	ending TIMESTAMP,
-	phonenumber varchar(10)
+	phonenumber varchar(15)
 );
 select * from user_info;
 select * from user_events;
