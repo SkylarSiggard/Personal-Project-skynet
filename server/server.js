@@ -33,8 +33,6 @@ app.delete('/api/events/:event_id', eventCtrl.deleteEvent)
 
 //! cron  //////////////////////
 app.post('/api/messages', twilio.text)
-app.put('/api/messages' , twilio.editText)
-app.delete('/api/messages', twilio.deleteText)
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db) 

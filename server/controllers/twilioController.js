@@ -10,12 +10,12 @@ const client = require('twilio')(
 module.exports = {
     text: async (req, res) => {
         const {phonenumber, title, starting, ending, description} = req.body
-        const db = req.app.get('db')
-        const {userId} = req.session.user
-        const {event_id} = req.params
+        // const db = req.app.get('db')
+        // const {userId} = req.session.user
+        // const {event_id} = req.params
         const day = moment(starting).format('D')
         const month = moment(starting).format('M')
-    console.log('times', "min", min, 'hour', hour, 'day', day - 1, 'month', month)
+    console.log('day:', day - 1, ', month:', month)
 
     res.header('Content-Type', 'application/json');
     cron.schedule(`* * ${day - 1} ${month} *`, function() {
@@ -37,13 +37,13 @@ module.exports = {
             res.send(JSON.stringify({ success: false }))
         })
     })
-    },
-    editText: async (res, req) => {
+    }
+    // editText: async (res, req) => {
 
-    },
-    deleteText: async (res, req) => {
+    // },
+    // deleteText: async (res, req) => {
 
-    },
+    // },
 }
 
 //! twillio //////////////////////
