@@ -75,10 +75,14 @@ class Lander extends Component {
                 <div>
                 <div className='titles'>Login in here</div>
                     <div className='login'>
-                <div>Login Email</div>
-                <input onChange={(e) => this.handleChange(e, 'email')} type="text" placeholder='email'/>
-                <div>Your Password</div>
-                <input onChange={(e) => this.handleChange(e, 'password')} type="text" placeholder='password'/>
+                <div className='input-titles'>Login Email</div>
+                <span className='input'>
+                <input onChange={(e) => this.handleChange(e, 'email')} type="text" placeholder='Email'/>
+                </span>
+                <div className='input-titles'>Your Password</div>
+                <span className='input'>
+                <input onChange={(e) => this.handleChange(e, 'password')} type="password" placeholder='Password'/>
+                </span>
                 <div>
                     <div className="log">
                         <button className='regbutton'  onClick={() => this.toggleChange()}>Register</button>
@@ -91,13 +95,19 @@ class Lander extends Component {
                 <div className='titles'>
                 <div>Create an account</div>
                 <div className="login">
-                    <div>Your Email</div>
-                    <input onChange={(e) => this.handleChange(e, 'email')} type="text" placeholder='email'/>
-                    <div>Set a password</div>
+                    <div className='input-titles'>Your Email</div>
+                <span className='input'>
+                    <input onChange={(e) => this.handleChange(e, 'email')} type="text" placeholder='Email'/>
+                </span>
+                    <div className='input-titles'>Set a password</div>
                     <div>
-                        <input onChange={(e) => this.handleChange(e, 'password')} type="text" placeholder='password'/>
+                        <span className='input'>
+                        <input onChange={(e) => this.handleChange(e, 'password')} type="text" placeholder='Password'/>
+                        </span>
                     </div>
-                        <input onChange={(e) => this.handleChange(e, 'password2')} type="text" placeholder='repeat password'/>
+                        <span className='input'>
+                        <input onChange={(e) => this.handleChange(e, 'password2')} type="text" placeholder='Repeat Password'/>
+                        </span>
                 <div>
                     <div className="log">
                         <button className='regbutton' onClick={() => this.toggleChange()}>Back to Login</button>

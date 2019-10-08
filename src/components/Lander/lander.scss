@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Mansalva&display=swap');
 @import url('https://fonts.googleapis.com/css?family=PT+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Grenze&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
 
 .lander {
     height: 100vh;
@@ -31,9 +34,10 @@
         height: 150px;
     }
 }
+
 .login {
     background: #abced1;
-    height: 150px;
+    height: 220px;
     margin: 50px;
     padding: 10px 0 0 10px;
     font-family: 'PT Serif', serif;
@@ -49,17 +53,59 @@
     font-size: 50px;
 }
 .regbutton {
-    background: none;
+    background: rgba(0, 0, 255, 0.075);
+    border-radius: 30px;
     border: none;
     border-radius: 30;
     cursor: pointer;
+    font-family: 'Lobster', cursive;
+    margin: 0 10px 0 10px;
 }
 .regbutton:hover {
+    color: blue;
+}
+.enter:hover {
     color: blue;
 }
 .log {
     margin: 10px;
 }
 .enter {
+    background: #abced4;
+    font-family: 'Anton', sans-serif;
+    margin: 0 10px 0 10px;
+    cursor: pointer;
     border-radius: 30px;
+    border-color: rgba(0, 0, 255, 0.116);
 }
+.input-titles {
+    font-family: 'Grenze', serif;
+    font-size: 30px;
+}
+
+
+.input {
+	position:relative;
+	font-size: 0.5em;
+	background: linear-gradient(21deg, #10abff, #1beabd);
+	padding: 3px;
+	display: inline-block;
+	border-radius: 9999em;
+	*:not(span) {
+		position: relative;
+		display: inherit;
+		border-radius: inherit;
+		margin: 0;
+		border: none;
+		outline: none;
+		padding: 0 .325em;
+		z-index: 1; 
+	
+		&:focus + span {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+}
+
+

@@ -16,9 +16,9 @@ export default class Header extends Component {
     render() {
         return (
             <div className='header'>
-            <Link to='/list'><button>List</button></Link>
-            <Link to='/create'><button>Create</button></Link>
-            <button onClick={() => this.logout()}>Logout</button>
+            <Link to='/list'><button className='list-button'>List</button></Link>
+            <Link to='/create'><button className='create-button'>Create</button></Link>
+            <button onClick={() => this.logout()} className='logout-button'>Logout</button>
         </div>
         );
     }
