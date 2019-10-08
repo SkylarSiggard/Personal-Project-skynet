@@ -10,10 +10,13 @@ const client = require('twilio')(
 module.exports = {
     text: async (req, res) => {
         const {phonenumber, title, starting, ending, description} = req.body
-        let min = moment(starting).format('m')
-        let hour = moment(starting).format('h')
-        let day = moment(starting).format('d')
-        let month = moment(starting).format('M')
+        const db = req.app.get('db')
+        const {userId} = req.session.user
+        const {event_id} = req.params
+        const min = moment(starting).format('m')
+        const hour = moment(starting).format('h')
+        const day = moment(starting).format('d')
+        const month = moment(starting).format('M')
     console.log('times', "min", min, 'hour', hour, 'day', day, 'month', month)
 
     res.header('Content-Type', 'application/json');
@@ -29,7 +32,8 @@ module.exports = {
         })
         .then(() => {
             res.send(JSON.stringify({ success: true }))
-            // maybe habe a delay for db.delete_after_complete.sql
+            // const result = await db.delete_after_complete([userId, event_id])
+            // res.status(200).send(result)
         }) 
         .catch(err => {
             console.log(err)
@@ -38,6 +42,7 @@ module.exports = {
     })
     } 
 }
+
 //! twillio //////////////////////
 // app.post('/api/messages', (req, res) => {
 //     const {phonenumber, title, starting, ending, description} = req.body
