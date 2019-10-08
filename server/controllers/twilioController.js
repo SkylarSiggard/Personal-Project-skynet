@@ -13,15 +13,12 @@ module.exports = {
         const db = req.app.get('db')
         const {userId} = req.session.user
         const {event_id} = req.params
-        const min = moment(starting).format('m')
-        const hour = moment(starting).format('h')
-        const day = moment(starting).format('d')
+        const day = moment(starting).format('D')
         const month = moment(starting).format('M')
-    console.log('times', "min", min, 'hour', hour, 'day', day, 'month', month)
+    console.log('times', "min", min, 'hour', hour, 'day', day - 1, 'month', month)
 
     res.header('Content-Type', 'application/json');
-    cron.schedule(`* * * * *`, function() {
-    // cron.schedule(`${min} ${hour} ${day} ${month} *`, function() {
+    cron.schedule(`* * ${day - 1} ${month} *`, function() {
         console.log('---------------')
         console.log('Running Cron job')
         client.messages
