@@ -79,11 +79,21 @@ export default class Create extends Component {
                 <div>Title</div>
                 <div className="outer-box">
             <div  className="creater-box">
+                <span className='input'>
                 <input onChange={(e) => this.handleChange(e, 'title')}  type="text" placeholder='Title of the event'/>
-                <input onChange={(e) => this.handleChange(e, 'description')}  type="text" placeholder='Description of the event'/>
+                </span>
+                <span className='input1'>
+                <textarea onChange={(e) => this.handleChange(e, 'description')} rows='4' cols='20' type="text" placeholder='Description of the event'/>
+                </span>
+                <span className='input'>
                 <input onChange={(e) => this.handleChange(e, 'starting')} type="datetime-local" min="2019-10-01T00:00" max="2020-10-01T00:00" pattern='llll'/>
+                </span>
+                <span className='input'>
                 <input onChange={(e) => this.handleChange(e, 'ending')}  type="datetime-local" min="2019-10-01T00:00" max="2020-10-01T00:00"/>
+                </span>
+                <span className='input'>
                 <input onChange={(e) => this.handleChange(e, 'phonenumber')} placeholder='+1(801)123-4567' type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"required/>
+                </span>
             </div>
             {this.state.view 
             ? (
@@ -103,11 +113,11 @@ export default class Create extends Component {
                 <div className="number">
                     {`Phone number: ${this.state.phonenumber}`}
                 </div>
-                <Link to='/list'><button onClick={() => this.create()}>Submit</button></Link>
-                <button onClick={() => this.toggleView()}>Close View</button>
+                <button className='open-view' onClick={() => this.toggleView()}>Close View</button>
+                <Link to='/list'><button className='submit' onClick={() => this.create()}>Submit</button></Link>
             </div>
             ) : (
-                <button onClick={() => this.toggleView()}>View the event</button>
+                <button className='open-view'  onClick={() => this.toggleView()}>View the event</button>
                 )}
             <div>
                 </div>

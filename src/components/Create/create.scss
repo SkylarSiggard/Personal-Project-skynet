@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Mansalva&display=swap');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Grenze&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
+
+
 .create {
         height: 100vh;
         width: 100%;
@@ -15,4 +22,116 @@
     box-shadow: 1px 3px 15px 5px rgba(0,0,0,0.54);
     margin: 0 30% 0 30%; 
     padding: 20px;
+}
+
+.lander {
+    height: 100vh;
+    width: 100%;
+    background-color: #fff;
+    background-image:
+    linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+    linear-gradient(#eee .1em, transparent .1em);
+    background-size: 100% 1.2em;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+@media (min-width: 1200px) {
+    .login {
+        min-width: 300px;
+        height: 200px;
+    }
+}
+@media (min-width: 800px) {
+    .login {
+        min-width: 600px;
+        height: 150px;
+    }
+}
+@media (min-width: 400px) {
+    .login {
+        min-width: 350px;
+        height: 150px;
+    }
+}
+
+.titles {
+    font-family: 'Mansalva', cursive;
+    font-size: 50px;
+}
+.open-view {
+    background: rgba(0, 0, 255, 0.075);
+    border-radius: 30px;
+    border: none;
+    border-radius: 30;
+    cursor: pointer;
+    font-family: 'Lobster', cursive;
+    margin: 10px 10px 0 10px;
+}
+.open-view:hover {
+    color: blue;
+    background-color: #7985ee56;
+}
+.submit:hover {
+    color: blue;
+    background-color: #10abff2f;
+}
+.submit {
+    background: #abced4;
+    font-family: 'Anton', sans-serif;
+    margin: 0 10px 0 10px;
+    cursor: pointer;
+    border-radius: 30px;
+    border-color: rgba(0, 0, 255, 0.116);
+}
+.input-titles {
+    font-family: 'Grenze', serif;
+    font-size: 30px;
+}
+.input {
+    position:relative;
+    margin: 5px;
+	font-size: 0.5em;
+	background: linear-gradient(21deg, #10abff, #1beabd);
+	padding: 3px;
+	display: inline-block;
+	border-radius: 9999em;
+	*:not(span) {
+		position: relative;
+		display: inherit;
+		border-radius: inherit;
+		margin: 0;
+		border: none;
+		outline: none;
+		padding: 0 .325em;
+		z-index: 1; 
+	
+		&:focus + span {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+}
+.input1 {
+    position:relative;
+    margin: 5px;
+	font-size: 0.5em;
+	background: linear-gradient(21deg, #10abff, #1beabd);
+	padding: 3px;
+	display: inline-block;
+	*:not(span) {
+		position: relative;
+		display: inherit;
+		border-radius: inherit;
+		margin: 0;
+		border: none;
+		outline: none;
+		padding: 0 .325em;
+		z-index: 1; 
+	
+		&:focus + span {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
 }

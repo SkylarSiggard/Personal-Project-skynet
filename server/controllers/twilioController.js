@@ -19,6 +19,7 @@ module.exports = {
 
     res.header('Content-Type', 'application/json');
     cron.schedule(`* * ${day - 1} ${month} *`, function() {
+    // cron.schedule(`0 11 ${day - 1} ${month} *`, function() {
         console.log('---------------')
         console.log('Running Cron job')
         client.messages
