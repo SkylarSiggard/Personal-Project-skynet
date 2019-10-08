@@ -37,7 +37,13 @@ module.exports = {
             res.send(JSON.stringify({ success: false }))
         })
     })
-    } 
+    },
+    editText: async (res, req) => {
+
+    },
+    deleteText: async (res, req) => {
+
+    },
 }
 
 //! twillio //////////////////////
