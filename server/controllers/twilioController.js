@@ -10,16 +10,17 @@ const client = require('twilio')(
 module.exports = {
     text: async (req, res) => {
         const {phonenumber, title, starting, ending, description} = req.body
+        const day = moment(starting).format('D')
+        const dayOfWeek = moment(starting).format('d')
+        const month = moment(starting).format('M')
+        console.log('day:', day - 1, ', month:', month, "weeday:", dayOfWeek - 1 )
         // const db = req.app.get('db')
         // const {userId} = req.session.user
         // const {event_id} = req.params
-        const day = moment(starting).format('D')
-        const month = moment(starting).format('M')
-    console.log('day:', day - 1, ', month:', month)
 
     res.header('Content-Type', 'application/json');
-    cron.schedule(`* * ${day - 1} ${month} *`, function() {
-    // cron.schedule(`0 11 ${day - 1} ${month} *`, function() {
+    cron.schedule(`* * ${day - 1} ${month} ${dayOfWeek - 1}`, function() {
+    // cron.schedule(`0 11 ${day - 1} ${month} ${dayOfWeek - 1}`, function() {
         console.log('---------------')
         console.log('Running Cron job')
         client.messages
@@ -28,7 +29,7 @@ module.exports = {
             to: phonenumber,
             body: `Event name: ${title}. Description: ${description}. Event starts at ${starting} and ends ${ending}. Dont replay to this message, it wont be received.`
         })
-        .then(() => {
+        .then( async () => {
             res.send(JSON.stringify({ success: true }))
             // const result = await db.delete_after_complete([userId, event_id])
             // res.status(200).send(result)
@@ -59,7 +60,6 @@ module.exports = {
 //     })
 //     .then(() => {
 //         res.send(JSON.stringify({ success: true }))
-//         // maybe habe a delay for db.delete_after_complete.sql
 //     }) 
 //     .catch(err => {
 //         console.log(err)

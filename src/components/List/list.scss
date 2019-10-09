@@ -1,12 +1,20 @@
-.list {
+@import url('https://fonts.googleapis.com/css?family=Mansalva&display=swap');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Grenze&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
+
+.back {
+    background-image:
+    linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+    linear-gradient(#eee .1em, transparent .1em);
     height: auto;
     min-height: 100vh;
     width: 100%;
     background-color: #fff;
-    background-image:
-    linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
-    linear-gradient(#eee .1em, transparent .1em);
     background-size: 100% 1.2em;
+}
+.list {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
@@ -14,10 +22,10 @@
 
 .events {
     height: auto;
-    max-width: 400px;
-    width: auto;
+    min-width: 200px;
+    width: 350px;
     margin: 20px;
-    padding: 10px;
+    padding: 10px 10px 20px 10px;
     background: #abced4;
     -webkit-box-shadow: 1px 3px 15px 5px rgba(0,0,0,0.54); 
     box-shadow: 1px 3px 15px 5px rgba(0,0,0,0.54);
@@ -32,4 +40,100 @@
     margin: 20px;
     border: none;
     border-radius: 20px;
+}
+
+.titlePage {
+    font-family: 'Mansalva', cursive;
+    font-size: 30px;
+    margin: 20px;
+}
+.open-edit {
+    background: rgba(0, 0, 255, 0.075);
+    border-radius: 30px;
+    border: none;
+    border-radius: 30;
+    cursor: pointer;
+    font-family: 'Lobster', cursive;
+    margin: 10px 10px 20px 10px;
+}
+.open-edit:hover {
+    color: blue;
+    background-color: #7985ee56;
+}
+.deleteEvent:hover {
+    color: blue;
+    background-color: #10abff2f;
+}
+.deleteEvent {
+    margin: 10px 10px 20px 10px;
+    background: #abced4;
+    font-family: 'Anton', sans-serif;
+    margin: 0 10px 0 10px;
+    cursor: pointer;
+    border-radius: 30px;
+    border-color: rgba(0, 0, 255, 0.116);
+}
+.newEvent:hover {
+    color: blue;
+    background-color: #10abff2f;
+}
+.newEvent {
+    margin: 10px 10px 20px 10px;
+    background: #abced4;
+    font-family: 'Anton', sans-serif;
+    margin: 0 10px 0 10px;
+    cursor: pointer;
+    border-radius: 30px;
+    border-color: rgba(0, 0, 255, 0.116);
+}
+.input-titles {
+    font-family: 'Grenze', serif;
+    font-size: 30px;
+}
+.input {
+    position:relative;
+    margin: 5px;
+	font-size: 0.5em;
+	background: linear-gradient(21deg, #10abff, #1beabd);
+	padding: 3px;
+	display: inline-block;
+	border-radius: 9999em;
+	*:not(span) {
+		position: relative;
+		display: inherit;
+		border-radius: inherit;
+		margin: 0;
+		border: none;
+		outline: none;
+		padding: 0 .325em;
+		z-index: 1; 
+	
+		&:focus + span {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+}
+.input1 {
+    position:relative;
+    margin: 5px;
+	font-size: 0.5em;
+	background: linear-gradient(21deg, #10abff, #1beabd);
+	padding: 3px;
+	display: inline-block;
+	*:not(span) {
+		position: relative;
+		display: inherit;
+		border-radius: inherit;
+		margin: 0;
+		border: none;
+		outline: none;
+		padding: 0 .325em;
+		z-index: 1; 
+	
+		&:focus + span {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
 }

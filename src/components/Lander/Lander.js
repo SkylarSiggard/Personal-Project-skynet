@@ -60,7 +60,7 @@ class Lander extends Component {
             if (res.data.user) {
                 this.updateUser(res.data.user)
                 this.props.history.push('/list')
-                swal.fire({type: 'success', text: res.data.message , showCancelButton: false, timer: 1000})
+                swal.fire({type: 'success', text: res.data.message , showCancelButton: false, timer: 800})
             }
         } catch (error) {  
             swal.fire({type: 'error', text: 'Wrong password or wrong email' , showCancelButton: false, timer: 1500})

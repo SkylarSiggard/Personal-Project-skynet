@@ -4,15 +4,24 @@
 @import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
 
-
+.titlePage {
+    font-family: 'Mansalva', cursive;
+    font-size: 50px;
+    margin: 20px;
+}
 .create {
-        height: 100vh;
+        min-height: 100vh;
+        height: auto;
         width: 100%;
         background-color: #fff;
         background-image:
         linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
         linear-gradient(#eee .1em, transparent .1em);
         background-size: 100% 1.2em;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
 }
 .outer-box{
     height: auto;
@@ -20,39 +29,7 @@
     background-color: #abced4;
     -webkit-box-shadow: 1px 3px 15px 5px rgba(0,0,0,0.54); 
     box-shadow: 1px 3px 15px 5px rgba(0,0,0,0.54);
-    margin: 0 30% 0 30%; 
     padding: 20px;
-}
-
-.lander {
-    height: 100vh;
-    width: 100%;
-    background-color: #fff;
-    background-image:
-    linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
-    linear-gradient(#eee .1em, transparent .1em);
-    background-size: 100% 1.2em;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-}
-@media (min-width: 1200px) {
-    .login {
-        min-width: 300px;
-        height: 200px;
-    }
-}
-@media (min-width: 800px) {
-    .login {
-        min-width: 600px;
-        height: 150px;
-    }
-}
-@media (min-width: 400px) {
-    .login {
-        min-width: 350px;
-        height: 150px;
-    }
 }
 
 .titles {
@@ -118,8 +95,9 @@
 	font-size: 0.5em;
 	background: linear-gradient(21deg, #10abff, #1beabd);
 	padding: 3px;
-	display: inline-block;
+    display: inline-block;
 	*:not(span) {
+        resize: none;
 		position: relative;
 		display: inherit;
 		border-radius: inherit;

@@ -52,15 +52,17 @@ export default class List extends Component {
             [key]: e.target.value
         })
     }
-    toggleEdit = () => {
+    toggleEdit = (event_id) => {
         this.setState({
             edit: !this.state.edit
         })
     }
     render() {
         return(
-            <div className="list">
+            <div className='back'>
             <Header history={this.props.history}/>
+            <div className='titlePage'>Your List of upcoming events</div>
+            <div className="list">
             {
                 this.state.listOfEvents.length ? (
                 this.state.listOfEvents.map(listOfEvents => {
@@ -84,16 +86,26 @@ export default class List extends Component {
                         </div>
                         {!this.state.edit ? <>{this.props.text}</> :
                     <div>
+                        <span className='input'>
                         <input onChange={(e) => this.handleChange(e, 'title')}  type="text" placeholder='Title of the event' maxLength="30"/>
+                        </span>
+                        <span className='input'>
                         <input onChange={(e) => this.handleChange(e, 'description')}  type="text" placeholder='Description of the event' minLength="300"/>
+                        </span>
+                        <span className='input'>
                         <input onChange={(e) => this.handleChange(e, 'starting')} type="datetime-local" min="2019-10-01T00:00" max="2020-10-01T00:00"/>
+                        </span>
+                        <span className='input'>
                         <input onChange={(e) => this.handleChange(e, 'ending')}  type="datetime-local" min="2019-10-01T00:00" max="2020-10-01T00:00"/>
+                        </span>
+                        <span className='input'>
                         <input onChange={(e) => this.handleChange(e, 'phonenumber')} placeholder='Phone number' type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"required/>
-                    <button onClick={() => this.handleEdit(listOfEvents.event_id)}>Submit</button>
+                        </span>
+                    <button className='newEvent' onClick={() => this.handleEdit(listOfEvents.event_id)}>Submit</button>
                     </div>}
                         <div class='buttons'>
-                        <button onClick={() => this.toggleEdit()}>Edit</button>
-                        <button onClick={() => this.handleDelete(listOfEvents.event_id)}>Delete</button>
+                        <button className='open-edit' onClick={() => this.toggleEdit(listOfEvents.event_id)}>Edit</button>
+                        <button className='deleteEvent' onClick={() => this.handleDelete(listOfEvents.event_id)}>Delete</button>
                         </div>
                     </div>
                     </div>
@@ -102,6 +114,7 @@ export default class List extends Component {
                 ) : null
             }
             {/* <h1>{this.state.products.length ? this.state.products[0].name : null}</h1> */}
+            </div>
             <Link to='/create'><button className='add-to-list'>Add to list</button></Link>
         </div>
         )

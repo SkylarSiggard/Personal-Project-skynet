@@ -74,9 +74,10 @@ export default class Create extends Component {
     }
     render() {
         return(
-        <div className='create'>
+        <div>
             <Header history={this.props.history}/>
-                <div>Title</div>
+        <div className='create'>
+                <div className='titlePage'>Create an event!</div>
                 <div className="outer-box">
             <div  className="creater-box">
                 <span className='input'>
@@ -98,6 +99,9 @@ export default class Create extends Component {
             {this.state.view 
             ? (
                 <div className="viewer-box">
+                    <div className='reminder'>
+                        {`Reminder will sent a day before the event`}
+                    </div>
                 <div className="title">
                     {`Event name: ${this.state.title}`}
                 </div>
@@ -122,6 +126,7 @@ export default class Create extends Component {
             <div>
                 </div>
                 </div>
+        </div>
         </div>
         )
     }
