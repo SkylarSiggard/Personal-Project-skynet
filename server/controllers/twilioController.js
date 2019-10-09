@@ -20,8 +20,8 @@ module.exports = {
         // const {event_id} = req.params
 
     res.header('Content-Type', 'application/json');
-    // cron.schedule(`00 ${hour} ${day - 1} ${month} ${dayOfWeek - 1}`, function() {
-        cron.schedule(`* * ${day - 1} ${month} ${dayOfWeek - 1}`, function() {
+    cron.schedule(`00 ${hour} ${day - 1} ${month} ${dayOfWeek - 1}`, function() {
+        // cron.schedule(`* * ${day - 1} ${month} ${dayOfWeek - 1}`, function() {
         console.log('---------------')
         console.log('Running Cron job')
         client.messages

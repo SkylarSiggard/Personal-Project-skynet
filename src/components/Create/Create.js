@@ -73,6 +73,9 @@ export default class Create extends Component {
             })
     }
     render() {
+        const reminderTime = moment(this.state.starting).format('D')
+        const removeTime = reminderTime - 1 
+        const theReminderTime = `${moment(this.state.starting).format('LT')} on ${removeTime}/${moment(this.state.starting).format('M')}/${moment(this.state.starting).format('Y')}`
         return(
         <div>
             <Header history={this.props.history}/>
@@ -80,27 +83,37 @@ export default class Create extends Component {
                 <div className='titlePage'>Create an event!</div>
                 <div className="outer-box">
             <div  className="creater-box">
+                <div>
                 <span className='input'>
                 <input onChange={(e) => this.handleChange(e, 'title')}  type="text" placeholder='Title of the event'/>
                 </span>
+                </div>
+                <div>
                 <span className='input1'>
                 <textarea onChange={(e) => this.handleChange(e, 'description')} rows='4' cols='20' type="text" placeholder='Description of the event'/>
                 </span>
+                </div>
+                <div>
                 <span className='input'>
                 <input onChange={(e) => this.handleChange(e, 'starting')} type="datetime-local" min="2019-10-01T00:00" max="2020-10-01T00:00" pattern='llll'/>
                 </span>
+                </div>
+                <div>
                 <span className='input'>
                 <input onChange={(e) => this.handleChange(e, 'ending')}  type="datetime-local" min="2019-10-01T00:00" max="2020-10-01T00:00"/>
                 </span>
+                </div>
+                <div>
                 <span className='input'>
                 <input onChange={(e) => this.handleChange(e, 'phonenumber')} placeholder='+1(801)123-4567' type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"required/>
                 </span>
+                </div>
             </div>
             {this.state.view 
             ? (
                 <div className="viewer-box">
                     <div className='reminder'>
-                        {`Reminder will sent a day before the event`}
+                        {`Reminder will sent at ${theReminderTime}`}
                     </div>
                 <div className="title">
                     {`Event name: ${this.state.title}`}

@@ -23,15 +23,33 @@
         align-items: center;
         flex-direction: column;
 }
-.outer-box{
+    .outer-box{
     height: auto;
-    width: 300px;
+    max-width: 500px;
+    width: auto;
     background-color: #abced4;
     -webkit-box-shadow: 1px 3px 15px 5px rgba(0,0,0,0.54); 
     box-shadow: 1px 3px 15px 5px rgba(0,0,0,0.54);
     padding: 20px;
 }
-
+@media (min-width: 1200px) {
+    .outer-box {
+        min-width: 300px;
+        height: auto;
+    }
+}
+@media (min-width: 800px) {
+    .outer-box {
+        min-width: 600px;
+        height: auto;
+    }
+}
+@media (min-width: 400px) {
+    .outer-box {
+        min-width: 350px;
+        height: auto;
+    }
+}
 .titles {
     font-family: 'Mansalva', cursive;
     font-size: 50px;
