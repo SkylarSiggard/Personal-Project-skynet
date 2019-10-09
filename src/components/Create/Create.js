@@ -23,6 +23,7 @@ export default class Create extends Component {
         }
     }
     componentDidMount() {
+        console.log('on creater', this.state.login)
         // if (this.state.login === false) {this.props.history.push('/') }
     }
     handleChange = (e, key) => {

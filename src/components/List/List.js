@@ -8,8 +8,8 @@ import moment from 'moment'
 
 export default class List extends Component {
     constructor() {
-        super()
         const reduxState = store.getState()
+        super()
         this.state = {
             listOfEvents: reduxState.listOfEvents,
             login: reduxState.login,
@@ -22,6 +22,13 @@ export default class List extends Component {
         }
     }
     componentDidMount() {
+        const reduxState = store.getState()
+        this.setState({
+            login: reduxState.login
+        })
+        setTimeout(() => {console.log('timer: ', this.state.login)}, 3000)
+        
+        console.log('on list:', this.state.login)
         // if (this.state.login === false) {this.props.history.push('/') }
         axios.get('/api/events').then(res => {
             this.setState({
@@ -59,7 +66,6 @@ export default class List extends Component {
         })
     }
     render() {
-        console.log('list of events', this.state.login)
         return(
             <div className='back'>
             <Header history={this.props.history}/>
