@@ -20,7 +20,7 @@ module.exports = {
 
     res.header('Content-Type', 'application/json');
     cron.schedule(`* * ${day - 1} ${month} ${dayOfWeek - 1}`, function() {
-    // cron.schedule(`0 11 ${day - 1} ${month} ${dayOfWeek - 1}`, function() {
+    // cron.schedule(`00 11 ${day - 1} ${month} ${dayOfWeek - 1}`, function() {
         console.log('---------------')
         console.log('Running Cron job')
         client.messages
@@ -33,6 +33,7 @@ module.exports = {
             res.send(JSON.stringify({ success: true }))
             // const result = await db.delete_after_complete([userId, event_id])
             // res.status(200).send(result)
+            console.log('Cron Job Ran')
         }) 
         .catch(err => {
             console.log(err)
