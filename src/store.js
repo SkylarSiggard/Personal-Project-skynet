@@ -1,15 +1,19 @@
 import {createStore} from 'redux'
 
 const initialState = {
-    listOfEvents: []
+    listOfEvents: [],
+    login: false
 }
 
 export const ADD_EVENT = "ADD_EVENT"
 export const GET_EVENTS = 'GET_EVENTS'
 export const DELETE_EVENT = 'DELETE_EVENT'
+export const LOGIN_USER = 'LOGIN_USER'
 
 function reducer(state = initialState, action) {
     switch(action.type)  {
+        case LOGIN_USER:
+            return {...state, login: action.payload}
 
         case ADD_EVENT: 
             state.listOfEvents.push(action.payload)

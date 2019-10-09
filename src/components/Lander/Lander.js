@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import './lander.scss'
 import swal from 'sweetalert2'
 import axios from 'axios'
+import store, {LOGIN_USER} from './../../store'
 
 class Lander extends Component {
     constructor() {
@@ -46,6 +47,10 @@ class Lander extends Component {
                     swal.fire({type: 'success', text: res.data.message, showCancelButton: false, timer: 1500})
                     this.updateUser(res.data.user)
                     this.props.history.push('/list')
+                    store.dispatch({
+                        type: LOGIN_USER,
+                        payload: true
+                    })
                 } 
             } catch (error) {
                 swal.fire({type: 'error', text: 'Email is already in use', showCancelButton: false, timer: 1500})
@@ -61,6 +66,10 @@ class Lander extends Component {
                 this.updateUser(res.data.user)
                 this.props.history.push('/list')
                 swal.fire({type: 'success', text: res.data.message , showCancelButton: false, timer: 800})
+                store.dispatch({
+                    type: LOGIN_USER,
+                    payload: true
+                })
             }
         } catch (error) {  
             swal.fire({type: 'error', text: 'Wrong password or wrong email' , showCancelButton: false, timer: 1500})

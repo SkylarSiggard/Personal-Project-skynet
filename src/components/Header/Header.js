@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import axios from 'axios'
 import swal from 'sweetalert2'
 import './header.scss'
-
+import store, {LOGIN_USER} from './../../store'  
 
 
 export default class Header extends Component {
@@ -12,6 +12,10 @@ export default class Header extends Component {
         const res = await axios.delete('/auth/logout')
         this.props.history.push('/')
         swal.fire({type: 'success', text: res.data.message, showCancelButton: false, timer: 1000})
+        store.dispatch({
+            type: LOGIN_USER,
+            payload: false
+        })
     }
     render() {
         return (

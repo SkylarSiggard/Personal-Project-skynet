@@ -12,6 +12,7 @@ export default class List extends Component {
         const reduxState = store.getState()
         this.state = {
             listOfEvents: reduxState.listOfEvents,
+            login: reduxState.login,
             edit: false,
             title: '',
             description: '',
@@ -21,7 +22,7 @@ export default class List extends Component {
         }
     }
     componentDidMount() {
-        // if (this.state.listOfEvents.event_id === null) {this.props.history.push('/') }
+        // if (this.state.login === false) {this.props.history.push('/') }
         axios.get('/api/events').then(res => {
             this.setState({
                 listOfEvents: res.data
@@ -58,7 +59,7 @@ export default class List extends Component {
         })
     }
     render() {
-                // console.log('list of events', this.state.listOfEvents)
+        console.log('list of events', this.state.login)
         return(
             <div className='back'>
             <Header history={this.props.history}/>

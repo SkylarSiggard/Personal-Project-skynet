@@ -9,7 +9,9 @@ import moment from 'moment'
 export default class Create extends Component {
     constructor() {
         super()
+        const reduxState = store.getState()
         this.state = {
+            login: reduxState.login,
             title: '',
             description: '',
             starting: '',
@@ -19,6 +21,9 @@ export default class Create extends Component {
             submitting: false,
             error: false
         }
+    }
+    componentDidMount() {
+        // if (this.state.login === false) {this.props.history.push('/') }
     }
     handleChange = (e, key) => {
         this.setState({
