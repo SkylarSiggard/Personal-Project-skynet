@@ -21,12 +21,12 @@ export default class List extends Component {
         }
     }
     componentDidMount() {
+        // if (this.state.listOfEvents.event_id === null) {this.props.history.push('/') }
         axios.get('/api/events').then(res => {
             this.setState({
                 listOfEvents: res.data
             })
         })
-        // console.log('list of events', this.state.listOfEvents)
     }
     handleEdit = (event_id) =>{
         axios.put(`/api/events/${event_id}`, {
@@ -41,10 +41,10 @@ export default class List extends Component {
                 })
             })
             this.componentDidMount()
-    }
-    handleDelete = async (event_id) => {
-        // console.log('at delete', event_id)
-        axios.delete(`/api/events/${event_id}`)
+        }
+        handleDelete = async (event_id) => {
+            // console.log('at delete', event_id)
+            axios.delete(`/api/events/${event_id}`)
         this.componentDidMount()
     } 
     handleChange = (e, key) => {
@@ -58,6 +58,7 @@ export default class List extends Component {
         })
     }
     render() {
+                // console.log('list of events', this.state.listOfEvents)
         return(
             <div className='back'>
             <Header history={this.props.history}/>

@@ -134,7 +134,7 @@ export default class Create extends Component {
                 <Link to='/list'><button className='submit' onClick={() => this.create()}>Submit</button></Link>
             </div>
             ) : (
-                <button className='open-view'  onClick={() => this.toggleView()}>View the event</button>
+                <button className='open-view' onClick={() => this.toggleView()}>View the event</button>
                 )}
             <div>
                 </div>
