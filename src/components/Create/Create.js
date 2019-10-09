@@ -75,7 +75,7 @@ export default class Create extends Component {
     render() {
         const reminderTime = moment(this.state.starting).format('D')
         const removeTime = reminderTime - 1 
-        const theReminderTime = `${moment(this.state.starting).format('LT')} on ${removeTime}/${moment(this.state.starting).format('M')}/${moment(this.state.starting).format('Y')}`
+        const theReminderTime = `${moment(this.state.starting).format('LT')} on ${moment(this.state.starting).format('M')}/${removeTime}/${moment(this.state.starting).format('Y')}`
         return(
         <div>
             <Header history={this.props.history}/>
