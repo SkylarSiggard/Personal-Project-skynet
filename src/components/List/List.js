@@ -70,19 +70,19 @@ export default class List extends Component {
                     return (
                     <div className='items'>
                         <div className='events'>
-                        <div className="title">
+                        <div className="text">
                             {`Event name: ${listOfEvents.title}`}
                         </div>
-                        <div className="description">
+                        <div className="text">
                             {`Description: ${listOfEvents.description}`}
                         </div>
-                        <div className="times">
+                        <div className="text">
                             {`Event starts at ${moment(listOfEvents.starting).format("llll")}`}
                         </div>
-                        <div className="dates">
+                        <div className="text">
                             {`Event ends at ${moment(listOfEvents.ending).format("llll")}`}
                         </div>
-                        <div className="number">
+                        <div className="text">
                             {`Phone number: ${listOfEvents.phonenumber}`}
                         </div>
                         {!this.state.edit ? <>{this.props.text}</> :

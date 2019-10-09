@@ -112,22 +112,22 @@ export default class Create extends Component {
             {this.state.view 
             ? (
                 <div className="viewer-box">
-                    <div className='reminder'>
+                    <div className='text'>
                         {`Reminder will sent at ${theReminderTime}`}
                     </div>
-                <div className="title">
+                <div className="text">
                     {`Event name: ${this.state.title}`}
                 </div>
-                <div className="description">
+                <div className="text">
                     {`Description: ${this.state.description}`}
                 </div>
-                <div className="times">
+                <div className="text">
                     {`Event starts at ${moment(this.state.starting).format('llll')}`}
                 </div>
-                <div className="dates">
+                <div className="text">
                     {`Event ends at ${moment(this.state.ending).format('llll')}`}
                 </div>
-                <div className="number">
+                <div className="text">
                     {`Phone number: ${this.state.phonenumber}`}
                 </div>
                 <button className='open-view' onClick={() => this.toggleView()}>Close View</button>
