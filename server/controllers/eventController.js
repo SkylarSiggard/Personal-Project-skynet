@@ -17,6 +17,11 @@ module.exports = {
         })
         res.status(200).send(userEvents)
     },
+    getEveryEvent: async (req, res) => {
+        const db = req.app.get('db')
+        const userEvents = await db.see_all_events()
+        res.status(200).send(userEvents)
+    },
     addEvent: async (req, res) => {
         const db = req.app.get('db')
         const {title, description, starting, ending, phonenumber} = req.body

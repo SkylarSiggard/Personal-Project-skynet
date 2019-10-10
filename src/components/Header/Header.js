@@ -22,6 +22,7 @@ export default class Header extends Component {
             <div className='header'>
             <Link to='/list'><button className='list-button'>List</button></Link>
             <Link to='/create'><button className='create-button'>Create</button></Link>
+            <Link to='/every'><button className='everyone-button'>Everyone's events</button></Link>
             <button onClick={() => this.logout()} className='logout-button'>Logout</button>
         </div>
         );
