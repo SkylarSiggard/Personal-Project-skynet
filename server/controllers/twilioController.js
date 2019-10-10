@@ -22,14 +22,13 @@ module.exports = {
 
     res.header('Content-Type', 'application/json');
     cron.schedule(`${min} ${hour} ${day - 1} ${month} ${dayOfWeek - 1}`, function() {
-        // cron.schedule(`* * ${day - 1} ${month} ${dayOfWeek - 1}`, function() {
         console.log('---------------')
         console.log('Running Cron job')
         client.messages
         .create({
             from: process.env.TWILIO_PHONE_NUMBER,
             to: phonenumber,
-            body: `Event name: ${title}. Description: ${description}. Event starts at ${starting} and ends ${ending}. Dont replay to this message, it wont be received.`
+            body: ` ${title} ${description} ${starting} ${ending}. Dont replay to this message, it wont be received.`
         })
         .then( async () => {
             res.send(JSON.stringify({ success: true }))
@@ -42,12 +41,6 @@ module.exports = {
         })
     })
     }
-    // editText: async (res, req) => {
-
-    // },
-    // deleteText: async (res, req) => {
-
-    // },
 }
 
 //! twillio //////////////////////

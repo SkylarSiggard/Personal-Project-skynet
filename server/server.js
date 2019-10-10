@@ -34,6 +34,7 @@ app.delete('/api/events/:event_id', eventCtrl.deleteEvent)
 //! cron  //////////////////////
 app.post('/api/messages', twilio.text)
 
+
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db) 
     app.listen(SERVER_PORT, () => console.log(`${SERVER_PORT} is running! Dont touch anything!`))

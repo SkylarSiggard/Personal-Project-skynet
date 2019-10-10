@@ -10,6 +10,13 @@ export default class List extends Component {
     constructor() {
         const reduxState = store.getState()
         super()
+        let date = new Date()
+        let dayDate = moment(date).format('D')
+        let mouthDate = moment(date).format('M')
+        let yearDate = moment(date).format('YYYY')
+        let minDate = moment(date).format('m')
+        let hourDate = moment(date).format('h')
+        let realDate = `${yearDate}-${mouthDate}-${+dayDate + 2}T00:${minDate}:${hourDate}Z`
         this.state = {
             listOfEvents: reduxState.listOfEvents,
             login: reduxState.login,
@@ -18,7 +25,8 @@ export default class List extends Component {
             description: '',
             starting: '',
             ending: '',
-            phonenumber: ''
+            phonenumber: '',
+            dateNow: realDate 
         }
     }
     componentDidMount() {
@@ -26,9 +34,9 @@ export default class List extends Component {
         this.setState({
             login: reduxState.login
         })
-        setTimeout(() => {console.log('timer: ', this.state.login)}, 3000)
+        // setTimeout(() => {console.log('timer: ', this.state.login)}, 3000)
         
-        console.log('on list:', this.state.login)
+        // console.log('on list:', this.state.login)
         // if (this.state.login === false) {this.props.history.push('/') }
         axios.get('/api/events').then(res => {
             this.setState({
@@ -48,11 +56,32 @@ export default class List extends Component {
                     edit: false
                 })
             })
-            this.componentDidMount()
-        }
-        handleDelete = async (event_id) => {
-            // console.log('at delete', event_id)
-            axios.delete(`/api/events/${event_id}`)
+            axios.post(`/api/messages`, {
+                title: this.state.title + ' has been reschedule ',
+                description: ' the event details ' + this.state.description,
+                starting: ' the event starts ' + moment(this.state.starting).format('llll'),
+                ending: ' and ends on ' + moment(this.state.ending).format('llll'),
+                phonenumber: this.state.phonenumber
+                }).then(res => {
+                    this.setState({
+                        edit: false
+                    })
+                })
+                this.componentDidMount()
+            }
+            handleDelete = async (event_id) => {
+                // console.log('at delete', event_id)
+                axios.delete(`/api/events/${event_id}`)
+                axios.post(`/api/messages/` , {
+                    title: 'The event: ' + this.state.title + ' has been cancelled. ',
+                    description: 'the decription of the event: ' + this.state.description,
+                    starting: ' the event cancelled on ' + moment(this.state.dateNow).format('llll'),
+                    phonenumber: this.state.phonenumber
+                    }).then(res => {
+                        this.setState({
+                            edit: false
+                        })
+                    }) 
         this.componentDidMount()
     } 
     handleChange = (e, key) => {
@@ -95,7 +124,7 @@ export default class List extends Component {
                         {!this.state.edit ? <>{this.props.text}</> :
                     <div>
                         <span className='input'>
-                        <input onChange={(e) => this.handleChange(e, 'title')}  type="text" placeholder='Title of the event' maxLength="30"/>
+                        <input onChange={(e) => this.handleChange(e, 'title')} type="text" placeholder='old event' maxLength="30"/>
                         </span>
                         <span className='input'>
                         <input onChange={(e) => this.handleChange(e, 'description')}  type="text" placeholder='Description of the event' minLength="300"/>

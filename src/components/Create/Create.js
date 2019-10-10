@@ -23,7 +23,7 @@ export default class Create extends Component {
         }
     }
     componentDidMount() {
-        console.log('on creater', this.state.login)
+        // console.log('on creater', this.state.login)
         // if (this.state.login === false) {this.props.history.push('/') }
     }
     handleChange = (e, key) => {
@@ -63,10 +63,10 @@ export default class Create extends Component {
                 })
             })
         axios.post('/api/messages', {
-            title: this.state.title,
-            description: this.state.description,
-            starting: moment(this.state.starting).format('llll'),
-            ending: moment(this.state.ending).format('llll'),
+            title: 'Event name: ' + this.state.title,
+            description: ' the details of the event ' + this.state.description,
+            starting: ' the event starts at ' + moment(this.state.starting).format('llll'),
+            ending: ' and ends on ' + moment(this.state.ending).format('llll'),
             phonenumber: this.state.phonenumber
             }).then(res => {
                 this.setState({
