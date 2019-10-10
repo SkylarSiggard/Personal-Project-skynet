@@ -1,9 +1,21 @@
+const cron = require('node-cron')
+
 module.exports = {
     getUserEvents: async (req, res) => {
         const db = req.app.get('db')
         const {userId} = req.session.user
         const userEvents = await db.get_user_events([userId])
-        return res.status(200).send(userEvents)
+        cron.schedule("* * * * *", function() {
+            console.log('Scanning DataBase')
+            const today = new Date()
+            
+            const db = req.app.get('db')
+            const result = db.delete_after_complete([today]).then(res => {
+                res.status(200).send(result)
+            })
+            console.log('Cleaned DataBase')
+        })
+        res.status(200).send(userEvents)
     },
     addEvent: async (req, res) => {
         const db = req.app.get('db')

@@ -6,6 +6,7 @@ const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env
 const authCtrl = require('./controllers/authController')
 const eventCtrl = require('./controllers/eventController')
 const twilio = require('./controllers/twilioController')
+const cron = require('node-cron')
 
 const app = express()
 
