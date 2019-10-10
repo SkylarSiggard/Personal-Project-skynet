@@ -5,7 +5,7 @@ module.exports = {
         const db = req.app.get('db')
         const {userId} = req.session.user
         const userEvents = await db.get_user_events([userId])
-        cron.schedule("* * * * *", function() {
+        cron.schedule("0 1 * * *", function() {
             console.log('Scanning DataBase')
             const today = new Date()
             
