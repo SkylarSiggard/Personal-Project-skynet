@@ -1,16 +1,29 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
+$robot: 'Roboto Slab', serif;
+@import url('https://fonts.googleapis.com/css?family=Mansalva&display=swap');
+$masalva: 'Mansalva', cursive;
+@import url('https://fonts.googleapis.com/css?family=PT+Serif&display=swap');
+$lato: 'Lato', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Grenze&display=swap');
+$grenze: 'Grenze', serif;
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+$lobster: 'Lobster', cursive;
 @import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
+$anton: 'Anton', sans-serif;
+$base-color: #abced4;
+$paper: linear-gradient(90deg, transparent 79px, $base-color 79px, $base-color 81px, transparent 81px),
+linear-gradient(#eee .1em, transparent .1em);
+$carbon:  linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
 
 .header {
     width: 100%;
     height: 50px;
-    background:
-    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
-    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
-    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
-    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
-    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
-    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    background: $carbon;
     background-color: #131313;
     background-size: 20px 20px;
     display: flex;
@@ -18,34 +31,34 @@
     align-items: center;
 }
 .list-button {
-    font-family: 'Roboto Slab', serif;
+    font-family: $robot;
     border-radius: 20px;
     border: none;
-    background-color: #abced4;
+    background-color: $base-color;
     height: 20px;
     width: 60px;
     cursor: pointer;
 }
 .everyone-button {
-    font-family: 'Roboto Slab', serif;
+    font-family: $robot;
     border-radius: 20px;
     border: none;
-    background-color: #abced4;
+    background-color: $base-color;
     height: 20px;
     width: 128px;
     cursor: pointer;
 }
 .create-button {
-    font-family: 'Roboto Slab', serif;
+    font-family: $robot;
     border-radius: 20px;
     border: none;
-    background-color: #85d5e4;
+    background-color: $base-color;
     height: 20px;
     width: 60px;
     cursor: pointer;
 }
 .logout-button {
-    font-family: 'Anton', sans-serif;
+    font-family: $anton;
     border: none;
     border-radius: 20px;
     background-color: #99e3ee6c;
@@ -54,14 +67,18 @@
     cursor: pointer;
 }
 .list-button:hover {
-    color: #abced4;
+    color: $base-color;
     background-color: rgb(64, 64, 226);
 }
 .create-button:hover {
-    color: #abced4;
+    color: $base-color;
+    background-color: rgb(64, 64, 226);
+}
+.everyone-button:hover {
+    color: $base-color;
     background-color: rgb(64, 64, 226);
 }
 .logout-button:hover {
-    color: #abced4;
+    color: $base-color;
     background-color: rgb(64, 64, 226);
 }

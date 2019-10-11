@@ -13,7 +13,8 @@ CREATE TABLE user_events (
 	description varchar(300),
 	starting TIMESTAMP,
 	ending TIMESTAMP,
-	phonenumber varchar(15)
+	phonenumber varchar(15),
+	reminder TIMESTAMP 
 );
 select * from user_info;
 select * from user_events;
@@ -21,7 +22,7 @@ select * from user_events;
 
 INSERT INTO user_events (title, description, starting,
 ending, phonenumber, user_id)
-VALUES ('play', 'play game', '10-2-19 12:10pm', '10-3-12 12:20pm', '8015570544', 1);
+VALUES ('play', 'play game', '10-2-19 12:10pm', '10-3-12 12:20pm', '10-3-12 12:20pm', '8015570544', 1);
 
 
 

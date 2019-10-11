@@ -37,7 +37,7 @@ app.delete('/api/events/:event_id', eventCtrl.deleteEvent)
 //! cron  //////////////////////
 app.post('/api/messages', twilio.text)
 
-///! clean DB with cron 
+//! clean DB with cron 
 cron.schedule("00 00 * * * ", async function() {
     console.log('Scanning DataBase')
     const today = new Date()
@@ -45,6 +45,9 @@ cron.schedule("00 00 * * * ", async function() {
     const result = await db.delete_after_complete([today])
     console.log('Cleaned DataBase')
 })
+//! reboot ///////////////
+
+
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db) 

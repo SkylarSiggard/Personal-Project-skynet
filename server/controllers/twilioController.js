@@ -9,15 +9,15 @@ const client = require('twilio')(
 
 module.exports = {
     text: async (req, res) => {
-        const {phonenumber, title, starting, ending, description} = req.body
-        const min = moment(starting).format('m')
-        const hour = moment(starting).format('HH')
-        const day = moment(starting).format('D')
-        const dayOfWeek = moment(starting).format('d')
-        const month = moment(starting).format('M')
-        console.log('min', min,'hour', hour, 'day:', day - 1, ', month:', month, "weeday:", dayOfWeek - 1 )
+        const {phonenumber, title, starting, ending, reminder, description} = req.body
+        const min = moment(reminder).format('m')
+        const hour = moment(reminder).format('HH')
+        const day = moment(reminder).format('D')
+        const dayOfWeek = moment(reminder).format('d')
+        const month = moment(reminder).format('M')
+        console.log('min', min,'hour', hour, 'day:', day, ', month:', month, "weeday:", dayOfWeek)
     res.header('Content-Type', 'application/json');
-    cron.schedule(`${min} ${hour} ${day - 1} ${month} ${dayOfWeek - 1}`, function() {
+    cron.schedule(`${min} ${hour} ${day} ${month} ${dayOfWeek}`, function() {
         console.log('---------------')
         console.log('Running Cron job')
         client.messages
@@ -27,6 +27,7 @@ module.exports = {
             body: ` ${title} ${description} ${starting} ${ending}. Dont replay to this message, it wont be received.`
         })
         .then( async () => {
+            console.log('text sent')
             res.send(JSON.stringify({ success: true }))
         }) 
         .catch(err => {

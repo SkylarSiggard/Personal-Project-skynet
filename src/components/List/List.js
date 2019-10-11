@@ -15,8 +15,8 @@ export default class List extends Component {
         let mouthDate = moment(date).format('M')
         let yearDate = moment(date).format('YYYY')
         let minDate = moment(date).format('m')
-        let hourDate = moment(date).format('h')
-        let realDate = `${yearDate}-${mouthDate}-${+dayDate + 2}T00:${minDate}:${hourDate}Z`
+        let hourDate = moment(date).format('hh')
+        let realDate = `${yearDate}-${mouthDate}-${+dayDate + 2}T00:${+minDate + 1}:${hourDate}Z`
         this.state = {
             listOfEvents: reduxState.listOfEvents,
             login: reduxState.login,
@@ -26,6 +26,7 @@ export default class List extends Component {
             starting: '',
             ending: '',
             phonenumber: '',
+            reminder: '',
             dateNow: realDate 
         }
     }
@@ -50,7 +51,8 @@ export default class List extends Component {
             description: this.state.description,
             starting: this.state.starting,
             ending: this.state.ending,
-            phonenumber: this.state.phonenumber
+            phonenumber: this.state.phonenumber,
+            reminder: this.state.reminder
             }).then(res => {
                 this.setState({
                     edit: false
@@ -61,7 +63,8 @@ export default class List extends Component {
                 description: ' the event details ' + this.state.description,
                 starting: ' the event starts ' + moment(this.state.starting).format('llll'),
                 ending: ' and ends on ' + moment(this.state.ending).format('llll'),
-                phonenumber: this.state.phonenumber
+                phonenumber: this.state.phonenumber,
+                reminder: this.state.reminder
                 }).then(res => {
                     this.setState({
                         edit: false
@@ -76,7 +79,8 @@ export default class List extends Component {
                     title: 'The event: ' + this.state.title + ' has been cancelled. ',
                     description: 'the decription of the event: ' + this.state.description,
                     starting: ' the event cancelled on ' + moment(this.state.dateNow).format('llll'),
-                    phonenumber: this.state.phonenumber
+                    phonenumber: this.state.phonenumber,
+                    reminder: moment(this.state.dateNow).format('llll')
                     }).then(res => {
                         this.setState({
                             edit: false
@@ -119,6 +123,9 @@ export default class List extends Component {
                             {`Event ends at ${moment(listOfEvents.ending).format("llll")}`}
                         </div>
                         <div className="text">
+                            {`Reminder ${moment(listOfEvents.reminder).format("llll")}`}
+                        </div>
+                        <div className="text">
                             {`Phone number: ${listOfEvents.phonenumber}`}
                         </div>
                         {!this.state.edit ? <>{this.props.text}</> :
@@ -129,11 +136,14 @@ export default class List extends Component {
                         <span className='input'>
                         <input onChange={(e) => this.handleChange(e, 'description')}  type="text" placeholder='Description of the event' minLength="300"/>
                         </span>
-                        <span className='input'>
+                        <span className='input'>starting
                         <input onChange={(e) => this.handleChange(e, 'starting')} type="datetime-local" min="2019-10-01T00:00" max="2020-10-01T00:00"/>
                         </span>
-                        <span className='input'>
+                        <span className='input'>ending
                         <input onChange={(e) => this.handleChange(e, 'ending')}  type="datetime-local" min="2019-10-01T00:00" max="2020-10-01T00:00"/>
+                        </span>
+                        <span className='input'>reminder
+                        <input onChange={(e) => this.handleChange(e, 'reminder')}  type="datetime-local" min="2019-10-01T00:00" max="2020-10-01T00:00"/>
                         </span>
                         <span className='input'>
                         <input onChange={(e) => this.handleChange(e, 'phonenumber')} placeholder='Phone number' type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"required/>

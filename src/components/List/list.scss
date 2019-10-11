@@ -1,13 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Mansalva&display=swap');
+$masalva: 'Mansalva', cursive;
 @import url('https://fonts.googleapis.com/css?family=PT+Serif&display=swap');
+$lato: 'Lato', sans-serif;
 @import url('https://fonts.googleapis.com/css?family=Grenze&display=swap');
+$grenze: 'Grenze', serif;
 @import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+$lobster: 'Lobster', cursive;
 @import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
+$anton: 'Anton', sans-serif;
+$base-color: #abced4;
+$paper: linear-gradient(90deg, transparent 79px, $base-color 79px, $base-color 81px, transparent 81px),
+linear-gradient(#eee .1em, transparent .1em);
 
 .back {
-    background-image:
-    linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
-    linear-gradient(#eee .1em, transparent .1em);
+    background-image: $paper;
     height: auto;
     min-height: 100vh;
     width: 100%;
@@ -26,26 +32,25 @@
     width: 350px;
     margin: 20px;
     padding: 10px 10px 20px 10px;
-    background: #abced4;
+    background: $base-color;
     -webkit-box-shadow: 1px 3px 15px 5px rgba(0,0,0,0.54); 
     box-shadow: 1px 3px 15px 5px rgba(0,0,0,0.54);
 }
 .buttons {
     height: 20px;
 }
-
 .add-to-list {
     height: 100px;
     width: 100px;
     margin: 20px;
     border: none;
     border-radius: 20px;
-    background: linear-gradient(#d4ecee, #6f9fa3);
-    font-family: 'Mansalva', cursive; 
+    background: linear-gradient($base-color, #6f9fa3);
+    font-family: $masalva; 
 }
 
 .titlePage {
-    font-family: 'Mansalva', cursive;
+    font-family: $masalva;
     font-size: 30px;
     margin: 20px;
 }
@@ -55,7 +60,7 @@
     border: none;
     border-radius: 30;
     cursor: pointer;
-    font-family: 'Lobster', cursive;
+    font-family: $lobster;
     margin: 10px 10px 20px 10px;
 }
 .open-edit:hover {
@@ -68,8 +73,8 @@
 }
 .deleteEvent {
     margin: 10px 10px 20px 10px;
-    background: #abced4;
-    font-family: 'Anton', sans-serif;
+    background: $base-color;
+    font-family: $anton;
     margin: 0 10px 0 10px;
     cursor: pointer;
     border-radius: 30px;
@@ -81,22 +86,22 @@
 }
 .newEvent {
     margin: 10px 10px 20px 10px;
-    background: #abced4;
-    font-family: 'Anton', sans-serif;
+    background: $base-color;
+    font-family: $anton;
     margin: 0 10px 0 10px;
     cursor: pointer;
     border-radius: 30px;
     border-color: rgba(0, 0, 255, 0.116);
 }
 .input-titles {
-    font-family: 'Grenze', serif;
+    font-family: $grenze;
     font-size: 30px;
 }
 .input {
     position:relative;
     margin: 5px;
 	font-size: 0.5em;
-	background: linear-gradient(21deg, #10abff, #1beabd);
+	background: linear-gradient(21deg, #10abff, $base-color);
 	padding: 3px;
 	display: inline-block;
 	border-radius: 9999em;
@@ -141,7 +146,7 @@
 }
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 .text {
-    font-family: 'Lato', sans-serif;
+    font-family: $lato;
     font-size: 15px;
     margin: 5px;
     overflow-wrap: break-word;
