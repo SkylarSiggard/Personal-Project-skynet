@@ -3,6 +3,7 @@ import './lander.scss'
 import swal from 'sweetalert2'
 import axios from 'axios'
 import store, {LOGIN_USER} from './../../store'
+import {Link} from 'react-router-dom'
 
 class Lander extends Component {
     constructor() {
@@ -77,6 +78,7 @@ class Lander extends Component {
     }
     render() {
         return(
+        <div className='background'>
         <div className="lander">
             {!this.state.register
             ? (
@@ -111,11 +113,11 @@ class Lander extends Component {
                     <div className='input-titles'>Set a password</div>
                     <div>
                         <span className='input'>
-                        <input onChange={(e) => this.handleChange(e, 'password')} type="text" placeholder='Password'/>
+                        <input onChange={(e) => this.handleChange(e, 'password')} type="password" placeholder='Password'/>
                         </span>
                     </div>
                         <span className='input'>
-                        <input onChange={(e) => this.handleChange(e, 'password2')} type="text" placeholder='Repeat Password'/>
+                        <input onChange={(e) => this.handleChange(e, 'password2')} type="password" placeholder='Repeat Password'/>
                         </span>
                 <div>
                     <div className="log">
@@ -126,6 +128,8 @@ class Lander extends Component {
                 </div>
             </div>
             )}
+            <Link to='/about'><button></button></Link>
+            </div>
         </div>
         )
     }

@@ -1,0 +1,30 @@
+
+@import url('https://fonts.googleapis.com/css?family=Mansalva&display=swap');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Grenze&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
+
+.background {
+    min-height: 100vh;
+    height: auto;
+    width: 100%;
+    background-color: #fff;
+    background-image:
+    linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+    linear-gradient(#eee .1em, transparent .1em);
+    background-size: 100% 1.2em;
+    padding: 20px;
+}
+
+.info-box {
+background: #abced1;
+margin: 50px;
+font-family: 'PT Serif', serif;
+padding: 15px 13px 10px 13px;
+font-size: 18px;
+max-height: 300px;
+-webkit-box-shadow: 1px 3px 15px 18px rgba(0,0,0,0.54); 
+box-shadow: 1px 3px 15px 18px rgba(0,0,0,0.54);
+}
+
