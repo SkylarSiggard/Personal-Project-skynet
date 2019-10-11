@@ -16,7 +16,8 @@ export default class List extends Component {
         let yearDate = moment(date).format('YYYY')
         let minDate = moment(date).format('m')
         let hourDate = moment(date).format('hh')
-        let realDate = `${yearDate}-${mouthDate}-${+dayDate + 2}T00:${+minDate + 1}:${hourDate}Z`
+        let realDate = `${yearDate}-${mouthDate}-${+dayDate + 1}T00:${+minDate + 1}:${hourDate}Z`
+        // console.log(realDate)
         this.state = {
             listOfEvents: reduxState.listOfEvents,
             login: reduxState.login,
@@ -99,6 +100,7 @@ export default class List extends Component {
         })
     }
     render() {
+        // console.log(moment(this.state.dateNow).format('llll'))
         return(
             <div className='back'>
             <Header history={this.props.history}/>
