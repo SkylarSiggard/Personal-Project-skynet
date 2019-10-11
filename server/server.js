@@ -6,6 +6,8 @@ const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env
 const authCtrl = require('./controllers/authController')
 const eventCtrl = require('./controllers/eventController')
 const twilio = require('./controllers/twilioController')
+const cron = require('node-cron')
+
 
 const app = express()
 
@@ -35,8 +37,17 @@ app.delete('/api/events/:event_id', eventCtrl.deleteEvent)
 //! cron  //////////////////////
 app.post('/api/messages', twilio.text)
 
+///! clean DB with cron 
+cron.schedule("00 00 * * * ", async function() {
+    console.log('Scanning DataBase')
+    const today = new Date()
+    const db = app.get('db')
+    const result = await db.delete_after_complete([today])
+    console.log('Cleaned DataBase')
+})
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db) 
     app.listen(SERVER_PORT, () => console.log(`${SERVER_PORT} is running! Dont touch anything!`))
 })
+

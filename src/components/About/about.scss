@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
 
-.background {
+.background1 {
     min-height: 100vh;
     height: auto;
     width: 100%;
@@ -15,16 +15,26 @@
     linear-gradient(#eee .1em, transparent .1em);
     background-size: 100% 1.2em;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
 }
 
-.info-box {
+.info-box1 {
 background: #abced1;
 margin: 50px;
 font-family: 'PT Serif', serif;
 padding: 15px 13px 10px 13px;
 font-size: 18px;
 max-height: 300px;
+max-width: 500px;
 -webkit-box-shadow: 1px 3px 15px 18px rgba(0,0,0,0.54); 
 box-shadow: 1px 3px 15px 18px rgba(0,0,0,0.54);
 }
+.input-titles1 {
+    font-family: 'Grenze', serif;
+    font-size: 60px;
+}
+
 
