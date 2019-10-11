@@ -13,7 +13,7 @@ function About() {
                 <p>You'll also be able to view other</p>
                 <p>events created by other users.</p>
             </div>
-            <Link to='/'><button></button></Link>
+            <Link to='/'><button>Login Screen</button></Link>
             </div>
         )
     }

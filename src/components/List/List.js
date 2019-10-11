@@ -4,7 +4,7 @@ import './list.scss'
 import {Link} from 'react-router-dom'
 import store from './../../store'
 import axios from 'axios'
-import moment from 'moment'
+import moment from 'moment-timezone'
 
 export default class List extends Component {
     constructor() {

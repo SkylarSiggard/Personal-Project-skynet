@@ -128,8 +128,8 @@ class Lander extends Component {
                 </div>
             </div>
             )}
-            <Link to='/about'><button></button></Link>
             </div>
+            <Link to='/about'><button>About</button></Link>
         </div>
         )
     }
