@@ -36,5 +36,16 @@ box-shadow: 1px 3px 15px 18px rgba(0,0,0,0.54);
     font-family: 'Grenze', serif;
     font-size: 60px;
 }
-
+.aboutbutton:hover {
+    color: blue;
+}
+.aboutbutton {
+    background: #abced9;
+    border-radius: 30px;
+    border: none;
+    border-radius: 30;
+    cursor: pointer;
+    font-family: 'Lobster', cursive;
+    margin: 0 10px 0 10px;
+}
 

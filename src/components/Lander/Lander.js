@@ -129,7 +129,7 @@ class Lander extends Component {
             </div>
             )}
             </div>
-            <Link to='/about'><button>About</button></Link>
+            <Link to='/about'><button className='aboutbutton'>About</button></Link>
         </div>
         )
     }

@@ -15,7 +15,7 @@ function About() {
                 <p>events created by other users.</p>
             </div>
             </div>
-            <Link to='/'><button>Login Screen</button></Link>
+            <Link to='/'><button className='aboutbutton'>Login Screen</button></Link>
             </div>
         )
     }
