@@ -45,7 +45,7 @@ cron.schedule("00 00 * * * ", async function() {
     console.log('Cleaned DataBase')
 })
 //! reboot ///////////////
-cron.schedule("00 00 * * * ", async function() {
+cron.schedule("30 00 * * * ", async function() {
     process.exit(1)
 })
 
