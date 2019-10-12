@@ -37,21 +37,31 @@ app.delete('/api/events/:event_id', eventCtrl.deleteEvent)
 app.post('/api/messages', twilio.text)
 
 //! clean DB with cron 
-cron.schedule("00 00 * * * ", async function() {
+cron.schedule("00 02 * * * ", async function() {
     console.log('Scanning DataBase')
     const today = new Date()
     const db = app.get('db')
     const result = await db.delete_after_complete([today])
     console.log('Cleaned DataBase')
 })
+
 //! reboot ///////////////
-cron.schedule("30 00 * * * ", async function() {
+cron.schedule("15 02 * * * ", async function() {
     process.exit(1)
 })
 
+//! rescheduled crons will 
+cron.schedule("30 02 * * *", async function() {
+    console.log('Scanning DataBase')
+    const db = app.get('db')
+    const result = await db.restart_cron()
+    console.log('Rescheduled Cron')
+    console.log(result)
+})
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db) 
     app.listen(SERVER_PORT, () => console.log(`${SERVER_PORT} is running! Dont touch anything!`))
 })
+
 
