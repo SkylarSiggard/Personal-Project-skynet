@@ -22,6 +22,7 @@ export default class List extends Component {
             listOfEvents: reduxState.listOfEvents,
             login: reduxState.login,
             edit: false,
+            madeEdit: true,
             title: '',
             description: '',
             starting: '',
@@ -53,7 +54,8 @@ export default class List extends Component {
             starting: this.state.starting,
             ending: this.state.ending,
             phonenumber: this.state.phonenumber,
-            reminder: this.state.reminder
+            reminder: this.state.reminder,
+            madeEdit: this.state.madeEdit
             }).then(res => {
                 this.setState({
                     edit: false
@@ -65,7 +67,8 @@ export default class List extends Component {
                 starting: ' the event starts ' + moment(this.state.starting).format('llll'),
                 ending: ' and ends on ' + moment(this.state.ending).format('llll'),
                 phonenumber: this.state.phonenumber,
-                reminder: this.state.reminder
+                reminder: this.state.reminder,
+                madeEdit: this.state.madeEdit
                 }).then(res => {
                     this.setState({
                         edit: false
@@ -81,7 +84,8 @@ export default class List extends Component {
                     description: 'the decription of the event: ' + this.state.description,
                     starting: ' the event cancelled on ' + moment(this.state.dateNow).format('llll'),
                     phonenumber: this.state.phonenumber,
-                    reminder: moment(this.state.dateNow).format('llll')
+                    reminder: moment(this.state.dateNow).format('llll'),
+                    madeEdit: this.state.madeEdit
                     }).then(res => {
                         this.setState({
                             edit: false

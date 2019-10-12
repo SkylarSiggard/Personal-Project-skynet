@@ -4,6 +4,7 @@ description = ${description},
 starting = ${starting}, 
 ending = ${ending}, 
 phonenumber = ${phonenumber},
-reminder = ${reminder}
+reminder = ${reminder},
+edit = ${madeEdit}
 WHERE event_id = ${event_id} AND user_id = ${userId};
 

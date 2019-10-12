@@ -18,6 +18,7 @@ export default class Create extends Component {
             ending: '',
             phonenumber: '',
             reminder: '',
+            madeEdit: false,
             view: false,
             submitting: false,
             error: false
@@ -46,7 +47,8 @@ export default class Create extends Component {
             starting: this.state.starting,
             ending: this.state.ending,
             phonenumber: this.state.phonenumber,
-            reminder: this.state.reminder
+            reminder: this.state.reminder,
+            madeEdit: this.state.madeEdit
             }
         })
         axios.post('/api/events', {
@@ -55,7 +57,8 @@ export default class Create extends Component {
             starting: this.state.starting,
             ending: this.state.ending,
             phonenumber: this.state.phonenumber,
-            reminder: this.state.reminder
+            reminder: this.state.reminder,
+            madeEdit: this.state.madeEdit
             }).then(res => {
                 this.setState({
                     title: '',
@@ -63,7 +66,8 @@ export default class Create extends Component {
                     starting: '',
                     ending: '',
                     phonenumber: '',
-                    reminder: ''
+                    reminder: '',
+                    madeEdit: false
                 })
             })
         axios.post('/api/messages', {
@@ -72,7 +76,8 @@ export default class Create extends Component {
             starting: ' the event starts at ' + moment(this.state.starting).format('llll'),
             ending: ' and ends on ' + moment(this.state.ending).format('llll'),
             phonenumber: this.state.phonenumber,
-            reminder: this.state.reminder
+            reminder: this.state.reminder,
+            madeEdit: this.state.madeEdit
             }).then(res => {
                 this.setState({
                     title: '',
@@ -80,7 +85,8 @@ export default class Create extends Component {
                     starting: '',
                     ending: '',
                     phonenumber: '',
-                    reminder: ''
+                    reminder: '',
+                    madeEdit: false
                 })
             })
     }

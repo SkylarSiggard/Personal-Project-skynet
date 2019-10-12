@@ -14,7 +14,8 @@ CREATE TABLE user_events (
 	starting TIMESTAMP,
 	ending TIMESTAMP,
 	phonenumber varchar(15),
-	reminder TIMESTAMP 
+	reminder TIMESTAMP,
+	edit BOOLEAN 
 );
 select * from user_info;
 select * from user_events;
