@@ -99,12 +99,11 @@ export default class List extends Component {
         })
     }
     toggleEdit = (event_id) => {
-        this.setState({
+        this.setState({ 
             edit: !this.state.edit
         })
     }
     render() {
-        // console.log(moment(this.state.dateNow).format('llll'))
         return(
             <div className='back'>
             <Header history={this.props.history}/>
@@ -137,10 +136,10 @@ export default class List extends Component {
                         {!this.state.edit ? <>{this.props.text}</> :
                     <div>
                         <span className='input'>
-                        <input onChange={(e) => this.handleChange(e, 'title')} type="text" placeholder='old event' maxLength="30"/>
+                        <input onChange={(e) => this.handleChange(e, 'title')} value={listOfEvents.title} type="text" placeholder='old event' maxLength="30"/>
                         </span>
-                        <span className='input'>
-                        <input onChange={(e) => this.handleChange(e, 'description')}  type="text" placeholder='Description of the event' minLength="300"/>
+                        <span className='input1'>
+                        <textarea onChange={(e) => this.handleChange(e, 'description')} value={listOfEvents.description} type="text" placeholder='Description of the event' minLength="300"/>
                         </span>
                         <span className='input'>starting
                         <input onChange={(e) => this.handleChange(e, 'starting')} type="datetime-local" min="2019-10-01T00:00" max="2020-10-01T00:00"/>
@@ -152,7 +151,7 @@ export default class List extends Component {
                         <input onChange={(e) => this.handleChange(e, 'reminder')}  type="datetime-local" min="2019-10-01T00:00" max="2020-10-01T00:00"/>
                         </span>
                         <span className='input'>
-                        <input onChange={(e) => this.handleChange(e, 'phonenumber')} placeholder='Phone number' type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"required/>
+                        <input onChange={(e) => this.handleChange(e, 'phonenumber')} value={listOfEvents.phonenumber} placeholder='Phone number' type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"required/>
                         </span>
                     <button className='newEvent' onClick={() => this.handleEdit(listOfEvents.event_id)}>Submit</button>
                     </div>}
