@@ -6,7 +6,7 @@ const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env
 const authCtrl = require('./controllers/authController')
 const eventCtrl = require('./controllers/eventController')
 const twilio = require('./controllers/twilioController')
-const moment =require('moment')
+const moment =require('moment-timezone')
 const cron = require('node-cron')
 const client = require('twilio')(
     process.env.TWILIO_ACCOUNT_SID, 
@@ -67,11 +67,11 @@ cron.schedule("30 02 * * *", async function() {
     result.map(event => {
         console.log(event)
         if (event.edit === false) {
-        const min = moment(event.reminder).format('m')
-        const hour = moment(event.reminder).format('HH')
-        const day = moment(event.reminder).format('D')
-        const dayOfWeek = moment(event.reminder).format('d')
-        const month = moment(event.reminder).format('M')
+        const min = moment(event.reminder).tz("America/Denver").format('m')
+        const hour = moment(event.reminder).tz("America/Denver").format('HH')
+        const day = moment(event.reminder).tz("America/Denver").format('D')
+        const dayOfWeek = moment(event.reminder).tz("America/Denver").format('d')
+        const month = moment(event.reminder).tz("America/Denver").format('M')
         console.log('min', min,'hour', hour, 'day:', day, ', month:', month, "weekday:", dayOfWeek)
     cron.schedule(`${min} ${hour} ${day} ${month} ${dayOfWeek}`, function() {
         console.log('---------------')
@@ -80,7 +80,7 @@ cron.schedule("30 02 * * *", async function() {
         .create({
             from: process.env.TWILIO_PHONE_NUMBER,
             to: event.phonenumber,
-            body: `Event name: ${event.title} Details: ${event.description} Starts at: ${moment(event.starting).format('llll')} Ends at: ${moment(event.ending).format('llll')}. Dont replay to this message, it wont be received.`
+            body: `Event name: ${event.title} Details: ${event.description} Starts at: ${moment(event.starting).tz("America/Denver").format('llll')} Ends at: ${moment(event.ending).tz("America/Denver").format('llll')}. Dont replay to this message, it wont be received.`
         })
         .then( async () => {
             console.log('text sent')
@@ -90,11 +90,11 @@ cron.schedule("30 02 * * *", async function() {
         })
     }, null, true, 'America/Denver')
         } else {
-        const min = moment(event.reminder).format('m')
-        const hour = moment(event.reminder).format('HH')
-        const day = moment(event.reminder).format('D')
-        const dayOfWeek = moment(event.reminder).format('d')
-        const month = moment(event.reminder).format('M')
+        const min = moment(event.reminder).tz("America/Denver").format('m')
+        const hour = moment(event.reminder).tz("America/Denver").format('HH')
+        const day = moment(event.reminder).tz("America/Denver").format('D')
+        const dayOfWeek = moment(event.reminder).tz("America/Denver").format('d')
+        const month = moment(event.reminder).tz("America/Denver").format('M')
         console.log('min', min,'hour', hour, 'day:', day, ', month:', month, "weekday:", dayOfWeek)
     cron.schedule(`${min} ${hour} ${day} ${month} ${dayOfWeek}`, function() {
         console.log('---------------')
@@ -103,7 +103,7 @@ cron.schedule("30 02 * * *", async function() {
         .create({
             from: process.env.TWILIO_PHONE_NUMBER,
             to: event.phonenumber,
-            body: `Rescheduled Event: ${event.title} Details: ${event.description} Starts at: ${moment(event.starting).format('llll')} Ends at: ${moment(event.ending).format('llll')}. Dont replay to this message, it wont be received.`
+            body: `Rescheduled Event: ${event.title} Details: ${event.description} Starts at: ${moment(event.starting).tz("America/Denver").format('llll')} Ends at: ${moment(event.ending).tz("America/Denver").format('llll')}. Dont replay to this message, it wont be received.`
         })
         .then( async () => {
             console.log('text sent')

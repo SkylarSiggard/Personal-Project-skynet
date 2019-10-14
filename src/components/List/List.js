@@ -11,11 +11,11 @@ export default class List extends Component {
         const reduxState = store.getState()
         super()
         let date = new Date()
-        let dayDate = moment(date).format('D')
-        let mouthDate = moment(date).format('M')
-        let yearDate = moment(date).format('YYYY')
-        let minDate = moment(date).format('m')
-        let hourDate = moment(date).format('hh')
+        let dayDate = moment(date).tz("America/Denver").format('D')
+        let mouthDate = moment(date).tz("America/Denver").format('M')
+        let yearDate = moment(date).tz("America/Denver").format('YYYY')
+        let minDate = moment(date).tz("America/Denver").format('m')
+        let hourDate = moment(date).tz("America/Denver").format('hh')
         let realDate = `${yearDate}-${mouthDate}-${+dayDate + 1}T00:${+minDate + 1}:${hourDate}Z`
         // console.log(realDate)
         this.state = {
@@ -64,8 +64,8 @@ export default class List extends Component {
             axios.post(`/api/messages`, {
                 title: this.state.title + ' has been reschedule ',
                 description: ' the event details ' + this.state.description,
-                starting: ' the event starts ' + moment(this.state.starting).format('llll'),
-                ending: ' and ends on ' + moment(this.state.ending).format('llll'),
+                starting: ' the event starts ' + moment(this.state.starting).tz("America/Denver").format('llll'),
+                ending: ' and ends on ' + moment(this.state.ending).tz("America/Denver").format('llll'),
                 phonenumber: this.state.phonenumber,
                 reminder: this.state.reminder,
                 madeEdit: this.state.madeEdit
@@ -82,9 +82,9 @@ export default class List extends Component {
                 axios.post(`/api/messages/` , {
                     title: 'The event: ' + this.state.title + ' has been cancelled. ',
                     description: 'the decription of the event: ' + this.state.description,
-                    starting: ' the event cancelled on ' + moment(this.state.dateNow).format('llll'),
+                    starting: ' the event cancelled on ' + moment(this.state.dateNow).tz("America/Denver").format('llll'),
                     phonenumber: this.state.phonenumber,
-                    reminder: moment(this.state.dateNow).format('llll'),
+                    reminder: moment(this.state.dateNow).tz("America/Denver").format('llll'),
                     madeEdit: this.state.madeEdit
                     }).then(res => {
                         this.setState({
@@ -122,13 +122,13 @@ export default class List extends Component {
                             {`Description: ${listOfEvents.description}`}
                         </div>
                         <div className="text">
-                            {`Event starts at ${moment(listOfEvents.starting).format("llll")}`}
+                            {`Event starts at ${moment(listOfEvents.starting).tz("America/Denver").format("llll")}`}
                         </div>
                         <div className="text">
-                            {`Event ends at ${moment(listOfEvents.ending).format("llll")}`}
+                            {`Event ends at ${moment(listOfEvents.ending).tz("America/Denver").format("llll")}`}
                         </div>
                         <div className="text">
-                            {`Reminder ${moment(listOfEvents.reminder).format("llll")}`}
+                            {`Reminder ${moment(listOfEvents.reminder).tz("America/Denver").format("llll")}`}
                         </div>
                         <div className="text">
                             {`Phone number: ${listOfEvents.phonenumber}`}

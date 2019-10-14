@@ -4,7 +4,7 @@ import './create.scss'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import store, {ADD_EVENT} from './../../store'
-import moment from 'moment'
+import moment from 'moment-timezone'
 
 export default class Create extends Component {
     constructor() {
@@ -73,10 +73,10 @@ export default class Create extends Component {
         axios.post('/api/messages', {
             title: 'Event name: ' + this.state.title,
             description: ' the details of the event ' + this.state.description,
-            starting: ' the event starts at ' + moment(this.state.starting).format('llll'),
-            ending: ' and ends on ' + moment(this.state.ending).format('llll'),
+            starting: ' the event starts at ' + moment(this.state.starting).tz("America/Denver").format('llll'),
+            ending: ' and ends on ' + moment(this.state.ending).tz("America/Denver").format('llll'),
             phonenumber: this.state.phonenumber,
-            reminder: this.state.reminder,
+            reminder: moment(this.state.reminder).tz("America/Denver").format('llll'),
             madeEdit: this.state.madeEdit
             }).then(res => {
                 this.setState({
@@ -131,7 +131,7 @@ export default class Create extends Component {
             ? (
                 <div className="viewer-box">
                     <div className='text'>
-                        {`Reminder will sent at ${moment(this.state.reminder).format('llll')}`}
+                        {`Reminder will sent at ${moment(this.state.reminder).tz("America/Denver").format('llll')}`}
                     </div>
                 <div className="text">
                     {`Event name: ${this.state.title}`}
@@ -140,10 +140,10 @@ export default class Create extends Component {
                     {`Description: ${this.state.description}`}
                 </div>
                 <div className="text">
-                    {`Event starts at ${moment(this.state.starting).format('llll')}`}
+                    {`Event starts at ${moment(this.state.starting).tz("America/Denver").format('llll')}`}
                 </div>
                 <div className="text">
-                    {`Event ends at ${moment(this.state.ending).format('llll')}`}
+                    {`Event ends at ${moment(this.state.ending).tz("America/Denver").format('llll')}`}
                 </div>
                 <div className="text">
                     {`Phone number: ${this.state.phonenumber}`}

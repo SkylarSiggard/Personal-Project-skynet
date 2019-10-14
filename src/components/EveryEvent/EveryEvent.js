@@ -3,7 +3,7 @@ import Header from './../Header/Header'
 import './everyEvent.scss'
 import store from './../../store'
 import axios from 'axios'
-import moment from 'moment'
+import moment from 'moment-timezone'
 
 export default class List extends Component {
     constructor() {
@@ -41,10 +41,10 @@ export default class List extends Component {
                             {`Title of the event: ${listOfEvents.title}`}
                         </div>
                         <div className="text">
-                            {`Event starts at ${moment(listOfEvents.starting).format("llll")}`}
+                            {`Event starts at ${moment(listOfEvents.starting).tz("America/Denver").format("llll")}`}
                         </div>
                         <div className="text">
-                            {`Event ends at ${moment(listOfEvents.ending).format("llll")}`}
+                            {`Event ends at ${moment(listOfEvents.ending).tz("America/Denver").format("llll")}`}
                         </div>
                     </div>
                     </div>
