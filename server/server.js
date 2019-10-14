@@ -74,7 +74,7 @@ cron.schedule("30 02 * * *", async function() {
         console.log('min', min,'hour', hour, 'day:', day, ', month:', month, "weekday:", dayOfWeek)
     cron.schedule(`${min} ${hour} ${day} ${month} ${dayOfWeek}`, function() {
         console.log('---------------')
-        console.log('Running Cron job text')
+        console.log('Running Text Cron Job')
         client.messages
         .create({
             from: process.env.TWILIO_PHONE_NUMBER,
@@ -97,7 +97,7 @@ cron.schedule("30 02 * * *", async function() {
         console.log('min', min,'hour', hour, 'day:', day, ', month:', month, "weekday:", dayOfWeek)
     cron.schedule(`${min} ${hour} ${day} ${month} ${dayOfWeek}`, function() {
         console.log('---------------')
-        console.log('Running Cron job')
+        console.log('Running Text Cron Job')
         client.messages
         .create({
             from: process.env.TWILIO_PHONE_NUMBER,
