@@ -10,7 +10,7 @@ function About() {
             <div className='info-box1'>
                 <p>You can create an event and</p>
                 <p>then be reminded by text message</p>
-                <p>24 hours before the event.</p>
+                <p>whenever you want it to come.</p>
                 <p>You'll also be able to view other</p>
                 <p>events created by other users.</p>
             </div>

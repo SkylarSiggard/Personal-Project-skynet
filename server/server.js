@@ -6,8 +6,13 @@ const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env
 const authCtrl = require('./controllers/authController')
 const eventCtrl = require('./controllers/eventController')
 const twilio = require('./controllers/twilioController')
-const cron = require('node-cron') 
-const child_process = require('child_process')
+const moment =require('moment')
+const cron = require('node-cron')
+const client = require('twilio')(
+    process.env.TWILIO_ACCOUNT_SID, 
+    process.env.TWILIO_AUTH_TOKEN,
+    process.env.TWILIO_PHONE_NUMBER
+) 
 
 const app = express()
 
@@ -44,20 +49,13 @@ cron.schedule("00 02 * * * ", async function() {
     const db = app.get('db')
     const result = await db.delete_after_complete([today])
     console.log('Cleaned DataBase')
-})
+}, null, true, 'America/Denver')
 
 //! reboot ///////////////
-// cron.schedule("5/* * * * * ", async function() {
-//     process.exit(1)
-// })
 cron.schedule("15 02 * * * ", async function() {
-    process.on('SIGINT', function() {
-        console.log('restarting....');
-        child_process.fork(__filename);
-        process.exit(process.pid)
-    });
-    console.log('Running as %d', process.pid);
-})
+    process.exit(1)
+}, null, true, 'America/Denver')
+
 
 //! rescheduled crons will 
 cron.schedule("30 02 * * *", async function() {
@@ -65,7 +63,56 @@ cron.schedule("30 02 * * *", async function() {
     const db = app.get('db')
     const result = await db.restart_cron()
     console.log('Rescheduled Cron')
-    console.log(result)
+    result.map(event => {
+        console.log(event)
+        if (event.edit === false) {
+        const min = moment(event.reminder).format('m')
+        const hour = moment(event.reminder).format('HH')
+        const day = moment(event.reminder).format('D')
+        const dayOfWeek = moment(event.reminder).format('d')
+        const month = moment(event.reminder).format('M')
+        console.log('min', min,'hour', hour, 'day:', day, ', month:', month, "weekday:", dayOfWeek)
+    cron.schedule(`${min} ${hour} ${day} ${month} ${dayOfWeek}`, function() {
+        console.log('---------------')
+        console.log('Running Cron job text')
+        client.messages
+        .create({
+            from: process.env.TWILIO_PHONE_NUMBER,
+            to: event.phonenumber,
+            body: `Event name: ${event.title} Details: ${event.description} Starts at: ${moment(event.starting).format('llll')} Ends at: ${moment(event.ending).format('llll')}. Dont replay to this message, it wont be received.`
+        })
+        .then( async () => {
+            console.log('text sent')
+        }) 
+        .catch(err => {
+            console.log(err)
+        })
+    }, null, true, 'America/Denver')
+        } else {
+        const min = moment(event.reminder).format('m')
+        const hour = moment(event.reminder).format('HH')
+        const day = moment(event.reminder).format('D')
+        const dayOfWeek = moment(event.reminder).format('d')
+        const month = moment(event.reminder).format('M')
+        console.log('min', min,'hour', hour, 'day:', day, ', month:', month, "weekday:", dayOfWeek)
+    cron.schedule(`${min} ${hour} ${day} ${month} ${dayOfWeek}`, function() {
+        console.log('---------------')
+        console.log('Running Cron job')
+        client.messages
+        .create({
+            from: process.env.TWILIO_PHONE_NUMBER,
+            to: event.phonenumber,
+            body: `Rescheduled Event: ${event.title} Details: ${event.description} Starts at: ${moment(event.starting).format('llll')} Ends at: ${moment(event.ending).format('llll')}. Dont replay to this message, it wont be received.`
+        })
+        .then( async () => {
+            console.log('text sent')
+        }) 
+        .catch(err => {
+            console.log(err)
+        })
+    }, null, true, 'America/Denver')
+        }
+    })
 })
 
 massive(CONNECTION_STRING).then(db => {
