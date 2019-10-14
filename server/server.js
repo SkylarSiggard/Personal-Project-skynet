@@ -7,6 +7,7 @@ const authCtrl = require('./controllers/authController')
 const eventCtrl = require('./controllers/eventController')
 const twilio = require('./controllers/twilioController')
 const cron = require('node-cron') 
+const child_process = require('child_process')
 
 const app = express()
 
@@ -46,8 +47,16 @@ cron.schedule("00 02 * * * ", async function() {
 })
 
 //! reboot ///////////////
+// cron.schedule("5/* * * * * ", async function() {
+//     process.exit(1)
+// })
 cron.schedule("15 02 * * * ", async function() {
-    process.exit(1)
+    process.on('SIGINT', function() {
+        console.log('restarting....');
+        child_process.fork(__filename);
+        process.exit(process.pid)
+    });
+    console.log('Running as %d', process.pid);
 })
 
 //! rescheduled crons will 
