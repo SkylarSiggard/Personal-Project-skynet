@@ -86,9 +86,9 @@ class Lander extends Component {
                 <div>
                 <div className='titles'>Login in here</div>
                     <div className='login'>
-                <div className='input-titles'>Login Email</div>
+                <div className='input-titles'>Username</div>
                 <span className='input'>
-                <input onChange={(e) => this.handleChange(e, 'email')} type="text" placeholder='Email'/>
+                <input onChange={(e) => this.handleChange(e, 'email')} type="text" placeholder='Username'/>
                 </span>
                 <div className='input-titles'>Your Password</div>
                 <span className='input'>
@@ -106,9 +106,9 @@ class Lander extends Component {
                 <div className='titles'>
                 <div>Create an account</div>
                 <div className="login">
-                    <div className='input-titles'>Your Email</div>
+                    <div className='input-titles'>Create a Username</div>
                 <span className='input'>
-                    <input onChange={(e) => this.handleChange(e, 'email')} type="text" placeholder='Email'/>
+                    <input onChange={(e) => this.handleChange(e, 'email')} type="text" placeholder='Username'/>
                 </span>
                     <div className='input-titles'>Set a password</div>
                     <div>

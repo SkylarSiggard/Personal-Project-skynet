@@ -35,7 +35,7 @@ export default class List extends Component {
                     <div className='items'>
                         <div className='events'>
                         <div className="text">
-                            {`User's name: ${listOfEvents.email}`}
+                            {`Username: ${listOfEvents.email}`}
                         </div>
                         <div className="text">
                             {`Title of the event: ${listOfEvents.title}`}
