@@ -13,7 +13,6 @@ const client = require('twilio')(
     process.env.TWILIO_AUTH_TOKEN,
     process.env.TWILIO_PHONE_NUMBER
 ) 
-app.use(express.static(`${__dirname}/../build`))
 
 const app = express()
 
@@ -27,6 +26,7 @@ app.use(session({
         maxAge: 1000 * 60 * 60 * 24 * 10
     }
 }))
+app.use(express.static(`${__dirname}/../build`))
 
 //! auth endpoints /////////////////// 
 app.post('/auth/register', authCtrl.register)
