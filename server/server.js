@@ -13,6 +13,7 @@ const client = require('twilio')(
     process.env.TWILIO_AUTH_TOKEN,
     process.env.TWILIO_PHONE_NUMBER
 ) 
+app.use(express.static(`${__dirname}/../build`))
 
 const app = express()
 
