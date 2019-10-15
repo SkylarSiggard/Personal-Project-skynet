@@ -14,10 +14,10 @@ module.exports = {
         const hour = moment(reminder).format('HH')
         const day = moment(reminder).format('D')
         const month = moment(reminder).format('M')
-        console.log('min', min,'hour', +hour - 4, 'day:', day, 'month:', month)
+        console.log('min', min,'hour', hour, 'day:', day, 'month:', month)
     res.header('Content-Type', 'application/json');
     // cron.schedule(`${min} ${hour} ${day} ${month} *`, function() {
-    cron.schedule(`${min} ${+hour - 4} ${day} ${month} *`, function() {
+    cron.schedule(`${min} ${hour} ${day} ${month} *`, function() {
         console.log('---------------')
         console.log('Running Cron job')
         client.messages
@@ -34,7 +34,7 @@ module.exports = {
             console.log(err)
             res.send(JSON.stringify({ success: false }))
         })
-    }, null, true, 'America/Denver')
+    })
     }
 }
 
