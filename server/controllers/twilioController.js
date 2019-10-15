@@ -13,12 +13,11 @@ module.exports = {
         const min = moment(reminder).format('m')
         const hour = moment(reminder).format('HH')
         const day = moment(reminder).format('D')
-        const dayOfWeek = moment(reminder).format('d')
         const month = moment(reminder).format('M')
-        console.log('min', min,'hour', hour, 'day:', day, ', month:', month, "weekday:", dayOfWeek)
+        console.log('min', min,'hour', hour, 'day:', day, 'month:', month)
     res.header('Content-Type', 'application/json');
     // cron.schedule(`${min} ${+hour + 6} ${day} ${month} ${dayOfWeek}`, function() {
-    cron.schedule(`${min} * ${day} ${month} *`, function() {
+    cron.schedule(`${min} ${hour} ${day} ${month} *`, function() {
         console.log('---------------')
         console.log('Running Cron job')
         client.messages
