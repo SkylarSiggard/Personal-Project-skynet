@@ -72,7 +72,7 @@ cron.schedule("30 02 * * *", async function() {
         const day = moment(event.reminder).tz("America/Denver").format('D')
         const dayOfWeek = moment(event.reminder).tz("America/Denver").format('d')
         const month = moment(event.reminder).tz("America/Denver").format('M')
-        console.log('min', min,'hour', hour, 'day:', day, ', month:', month, "weekday:", dayOfWeek)
+        console.log('min', min,'hour', +hour + 6, 'day:', day, ', month:', month, "weekday:", dayOfWeek)
     cron.schedule(`${min} ${+hour + 6} ${day} ${month} ${dayOfWeek}`, function() {
         console.log('---------------')
         console.log('Running Text Cron Job')
@@ -95,7 +95,7 @@ cron.schedule("30 02 * * *", async function() {
         const day = moment(event.reminder).tz("America/Denver").format('D')
         const dayOfWeek = moment(event.reminder).tz("America/Denver").format('d')
         const month = moment(event.reminder).tz("America/Denver").format('M')
-        console.log('min', min,'hour', hour, 'day:', day, ', month:', month, "weekday:", dayOfWeek)
+        console.log('min', min,'hour', +hour + 6, 'day:', day, ', month:', month, "weekday:", dayOfWeek)
     cron.schedule(`${min} ${+hour + 6} ${day} ${month} ${dayOfWeek}`, function() {
         console.log('---------------')
         console.log('Running Text Cron Job')
