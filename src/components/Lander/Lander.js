@@ -40,12 +40,12 @@ class Lander extends Component {
     register = async () => {
         const {email, password, password2} = this.state
         if (password !== password2) {
-            swal.fire({type: 'error', text: 'Passwords dont match' , showCancelButton: false, timer: 1500})
+            swal.fire({type: 'error', text: 'Passwords dont match' , showConfirmButton: false, timer: 1500})
         } else {
             try {
                 const res = await axios.post('/auth/register', {email, password})
                 if (res.data.user) {
-                    swal.fire({type: 'success', text: res.data.message, showCancelButton: false, timer: 1500})
+                    swal.fire({type: 'success', text: res.data.message, showConfirmButton: false, timer: 1500})
                     this.updateUser(res.data.user)
                     this.props.history.push('/list')
                     store.dispatch({
@@ -54,7 +54,7 @@ class Lander extends Component {
                     })
                 } 
             } catch (error) {
-                swal.fire({type: 'error', text: 'Email is already in use', showCancelButton: false, timer: 1500})
+                swal.fire({type: 'error', text: 'Email is already in use', showConfirmButton: false, timer: 1500})
             }
         } 
     }
@@ -62,18 +62,18 @@ class Lander extends Component {
         const {email, password} = this.state
         try {
             const res = await axios.post('/auth/login', {email, password})
-            swal.fire({type: 'error', text: 'Wrong password or wrong email' , showCancelButton: false, timer: 1500})
+            swal.fire({type: 'error', text: 'Wrong password or wrong email' , showConfirmButton: false, timer: 1500})
             if (res.data.user) {
                 this.updateUser(res.data.user)
                 this.props.history.push('/list')
-                swal.fire({type: 'success', text: res.data.message , showCancelButton: false, timer: 800})
+                swal.fire({type: 'success', text: res.data.message , showConfirmButton: false, timer: 800})
                 store.dispatch({
                     type: LOGIN_USER,
                     payload: true
                 })
             }
         } catch (error) {  
-            swal.fire({type: 'error', text: 'Wrong password or wrong email' , showCancelButton: false, timer: 1500})
+            swal.fire({type: 'error', text: 'Wrong password or wrong email' , showConfirmButton: false, timer: 1500})
         }
     }
     render() {
