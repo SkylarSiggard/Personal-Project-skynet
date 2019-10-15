@@ -18,7 +18,7 @@ module.exports = {
         console.log('realtiem', 'min', min,'hour', hour, 'day:', day, 'month:', month)
     res.header('Content-Type', 'application/json');
     // cron.schedule(`${min} ${hour} ${day} ${month} *`, function() {
-    cron.schedule(`* ${hour} ${day} ${month} *`, function() {
+    cron.schedule(`* ${+hour - 6} ${day} ${month} *`, function() {
         console.log('---------------')
         console.log('Running Cron job')
         client.messages
