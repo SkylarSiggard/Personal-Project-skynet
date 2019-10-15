@@ -17,7 +17,7 @@ module.exports = {
         const month = moment(reminder).tz("America/Denver").format('M')
         console.log('min', min,'hour', hour, 'day:', day, ', month:', month, "weekday:", dayOfWeek)
     res.header('Content-Type', 'application/json');
-    cron.schedule(`${min} ${hour} ${day} ${month} ${dayOfWeek}`, function() {
+    cron.schedule(`${min} ${+hour + 6} ${day} ${month} ${dayOfWeek}`, function() {
         console.log('---------------')
         console.log('Running Cron job')
         client.messages
