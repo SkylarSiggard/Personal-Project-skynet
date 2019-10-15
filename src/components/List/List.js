@@ -64,8 +64,8 @@ export default class List extends Component {
             axios.post(`/api/messages`, {
                 title: this.state.title + ' has been reschedule ',
                 description: ' the event details ' + this.state.description,
-                starting: ' the event starts ' + moment(this.state.starting).format('llll'),
-                ending: ' and ends on ' + moment(this.state.ending).format('llll'),
+                starting: ' the event starts ' + moment(this.state.starting).tz("America/Denver").format('llll'),
+                ending: ' and ends on ' + moment(this.state.ending).tz("America/Denver").format('llll'),
                 phonenumber: this.state.phonenumber,
                 reminder: this.state.reminder,
                 madeEdit: this.state.madeEdit
