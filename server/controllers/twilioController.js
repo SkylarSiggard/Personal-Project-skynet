@@ -12,13 +12,12 @@ module.exports = {
         const {phonenumber, title, starting, ending, reminder, description} = req.body
         const min = moment(reminder).format('m')
         const hour = moment(reminder).format('HH')
-        const timezoneHour = hour + 6
         const day = moment(reminder).format('D')
         const month = moment(reminder).format('M')
         console.log( 'min', min,'hour', hour, 'day:', day, 'month:', month)
     res.header('Content-Type', 'application/json');
     // cron.schedule(`${min} ${hour} ${day} ${month} *`, function() {
-    cron.schedule(`* ${timezoneHour} ${day} ${month} *`, function() {
+    cron.schedule(`${min} 7 ${day} ${month} *`, function() {
         console.log('---------------')
         console.log('Running Cron job')
         client.messages
