@@ -35,7 +35,7 @@ module.exports = {
             console.log(err)
             res.send(JSON.stringify({ success: false }))
         })
-    }, null, true, 'America/Denver')
+    })
     }
 }
 
