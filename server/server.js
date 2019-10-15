@@ -88,7 +88,7 @@ cron.schedule("30 02 * * *", async function() {
         .catch(err => {
             console.log(err)
         })
-    }, null, true, 'America/Denver')
+    })
         } else {
         const min = moment(event.reminder).tz("America/Denver").format('m')
         const hour = moment(event.reminder).tz("America/Denver").format('HH')
