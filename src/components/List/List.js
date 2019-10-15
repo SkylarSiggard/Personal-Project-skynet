@@ -79,18 +79,18 @@ export default class List extends Component {
             handleDelete = async (event_id) => {
                 // console.log('at delete', event_id)
                 axios.delete(`/api/events/${event_id}`)
-                axios.post(`/api/messages/` , {
-                    title: 'The event: ' + this.state.title + ' has been cancelled. ',
-                    description: 'the decription of the event: ' + this.state.description,
-                    starting: ' the event cancelled on ' + moment(this.state.dateNow).format('llll'),
-                    phonenumber: this.state.phonenumber,
-                    reminder: moment(this.state.dateNow).format('llll'),
-                    madeEdit: this.state.madeEdit
-                    }).then(res => {
-                        this.setState({
-                            edit: false
-                        })
-                    }) 
+                // axios.post(`/api/messages/` , {
+                //     title: 'The event: ' + this.state.title + ' has been cancelled. ',
+                //     description: 'the decription of the event: ' + this.state.description,
+                //     starting: ' the event cancelled on ' + moment(this.state.dateNow).format('llll'),
+                //     phonenumber: this.state.phonenumber,
+                //     reminder: moment(this.state.dateNow).format('llll'),
+                //     madeEdit: this.state.madeEdit
+                //     }).then(res => {
+                //         this.setState({
+                //             edit: false
+                //         })
+                //     }) 
         this.componentDidMount()
     } 
     handleChange = (e, key) => {
