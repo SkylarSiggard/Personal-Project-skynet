@@ -10,11 +10,11 @@ const client = require('twilio')(
 module.exports = {
     text: async (req, res) => {
         const {phonenumber, title, starting, ending, reminder, description} = req.body
-        const min = moment(reminder).tz("America/Denver").format('m')
-        const hour = moment(reminder).tz("America/Denver").format('HH')
-        const day = moment(reminder).tz("America/Denver").format('D')
-        const dayOfWeek = moment(reminder).tz("America/Denver").format('d')
-        const month = moment(reminder).tz("America/Denver").format('M')
+        const min = moment(reminder).format('m')
+        const hour = moment(reminder).format('HH')
+        const day = moment(reminder).format('D')
+        const dayOfWeek = moment(reminder).format('d')
+        const month = moment(reminder).format('M')
         console.log('min', min,'hour', hour, 'day:', day, ', month:', month, "weekday:", dayOfWeek)
     res.header('Content-Type', 'application/json');
     // cron.schedule(`${min} ${+hour + 6} ${day} ${month} ${dayOfWeek}`, function() {
