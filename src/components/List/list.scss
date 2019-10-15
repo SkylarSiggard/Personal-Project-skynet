@@ -1,16 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Mansalva&display=swap');
-$masalva: 'Mansalva', cursive;
-@import url('https://fonts.googleapis.com/css?family=PT+Serif&display=swap');
-$lato: 'Lato', sans-serif;
-@import url('https://fonts.googleapis.com/css?family=Grenze&display=swap');
-$grenze: 'Grenze', serif;
-@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
-$lobster: 'Lobster', cursive;
-@import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
-$anton: 'Anton', sans-serif;
-$base-color: #abced4;
-$paper: linear-gradient(90deg, transparent 79px, $base-color 79px, $base-color 81px, transparent 81px),
-linear-gradient(#eee .1em, transparent .1em);
+@import '../../App.scss';
 
 .back {
     background-image: $paper;

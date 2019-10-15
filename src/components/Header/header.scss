@@ -1,24 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
-$robot: 'Roboto Slab', serif;
-@import url('https://fonts.googleapis.com/css?family=Mansalva&display=swap');
-$masalva: 'Mansalva', cursive;
-@import url('https://fonts.googleapis.com/css?family=PT+Serif&display=swap');
-$lato: 'Lato', sans-serif;
-@import url('https://fonts.googleapis.com/css?family=Grenze&display=swap');
-$grenze: 'Grenze', serif;
-@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
-$lobster: 'Lobster', cursive;
-@import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
-$anton: 'Anton', sans-serif;
-$base-color: #abced4;
-$paper: linear-gradient(90deg, transparent 79px, $base-color 79px, $base-color 81px, transparent 81px),
-linear-gradient(#eee .1em, transparent .1em);
-$carbon:  linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
-linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
-linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
-linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
-linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
-linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+@import '../../App.scss';
 
 .header {
     width: 100%;
