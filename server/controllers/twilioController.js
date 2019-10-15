@@ -18,7 +18,7 @@ module.exports = {
         console.log('min', min,'hour', +hour + 6, 'day:', day, ', month:', month, "weekday:", dayOfWeek)
     res.header('Content-Type', 'application/json');
     // cron.schedule(`${min} ${+hour + 6} ${day} ${month} ${dayOfWeek}`, function() {
-    cron.schedule(`* * ${day} ${month} ${dayOfWeek}`, function() {
+    cron.schedule(`* ${+hour + 6} ${day} ${month} ${dayOfWeek}`, function() {
         console.log('---------------')
         console.log('Running Cron job')
         client.messages
