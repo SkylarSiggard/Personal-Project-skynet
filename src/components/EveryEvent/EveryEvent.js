@@ -41,10 +41,10 @@ export default class List extends Component {
                             {`Title of the event: ${listOfEvents.title}`}
                         </div>
                         <div className="text">
-                            {`Event starts at ${moment(listOfEvents.starting).tz("America/Denver").format("llll")}`}
+                            {`Event starts at ${moment(listOfEvents.starting).format("llll")}`}
                         </div>
                         <div className="text">
-                            {`Event ends at ${moment(listOfEvents.ending).tz("America/Denver").format("llll")}`}
+                            {`Event ends at ${moment(listOfEvents.ending).format("llll")}`}
                         </div>
                     </div>
                     </div>

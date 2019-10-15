@@ -50,12 +50,12 @@ cron.schedule("00 02 * * * ", async function() {
     const db = app.get('db')
     const result = await db.delete_after_complete([today])
     console.log('Cleaned DataBase')
-}, null, true, 'America/Denver')
+})
 
 //! reboot ///////////////
 cron.schedule("15 02 * * * ", async function() {
     process.exit(1)
-}, null, true, 'America/Denver')
+})
 
 
 //! rescheduled crons will 
