@@ -73,10 +73,10 @@ export default class Create extends Component {
         axios.post('/api/messages', {
             title: 'Event name: ' + this.state.title,
             description: ' the details of the event ' + this.state.description,
-            starting: ' the event starts at ' + moment(this.state.starting).format('llll'),
-            ending: ' and ends on ' + moment(this.state.ending).format('llll'),
+            starting: ' the event starts at ' + moment(this.state.starting).tz("America/Denver").format('llll'),
+            ending: ' and ends on ' + moment(this.state.ending).tz("America/Denver").format('llll'),
             phonenumber: this.state.phonenumber,
-            reminder: moment(this.state.reminder).format('llll'),
+            reminder: moment(this.state.reminder).tz("America/Denver").format('llll'),
             madeEdit: this.state.madeEdit
             }).then(res => {
                 this.setState({
