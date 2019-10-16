@@ -36,8 +36,8 @@ font-family: $lobster;
 padding: 15px 13px 10px 13px;
 font-size: 18px;
 max-height: 300px;
--webkit-box-shadow: 1px 3px 15px 18px rgba(0, 0, 0, 0.062); 
-box-shadow: 1px 3px 15px 18px rgba(0, 0, 0, 0.055);
+-webkit-box-shadow: 1px 3px 15px 5px rgba(0,0,0,0.54); 
+box-shadow: 1px 3px 15px 5px rgba(0,0,0,0.54);
 }
 
 @media (min-width: 1200px) {
