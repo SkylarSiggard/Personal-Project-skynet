@@ -53,26 +53,26 @@ cron.schedule("00 02 * * * ", async function() {
 })
 
 //! reboot ///////////////
-cron.schedule("15 02 * * * ", async function() {
+cron.schedule("05 02 * * * ", async function() {
     process.exit(1)
 })
 
 
 //! rescheduled crons will 
-cron.schedule("30 02 * * *", async function() {
+cron.schedule("10 02 * * *", async function() {
     console.log('Scanning DataBase')
     const db = app.get('db')
     const result = await db.restart_cron()
     console.log('Rescheduled Cron')
     result.map(event => {
-        console.log(event)
+        // console.log(event)
         if (event.edit === false) {
         const min = moment(event.reminder).format('m')
         const hour = moment(event.reminder).format('HH')
         const day = moment(event.reminder).format('D')
         const dayOfWeek = moment(event.reminder).format('d')
         const month = moment(event.reminder).format('M')
-        console.log('min', min,'hour', +hour + 6, 'day:', day, ', month:', month, "weekday:", dayOfWeek)
+        console.log('min', min,'hour', hour, 'day:', day, ', month:', month, "weekday:", dayOfWeek)
     cron.schedule(`${min} ${hour} ${day} ${month} *`, function() {
         console.log('---------------')
         console.log('Running Text Cron Job')
@@ -95,7 +95,7 @@ cron.schedule("30 02 * * *", async function() {
         const day = moment(event.reminder).format('D')
         const dayOfWeek = moment(event.reminder).format('d')
         const month = moment(event.reminder).format('M')
-        console.log('min', min,'hour', +hour + 6, 'day:', day, ', month:', month, "weekday:", dayOfWeek)
+        console.log('min', min,'hour', hour, 'day:', day, ', month:', month, "weekday:", dayOfWeek)
     cron.schedule(`${min} ${hour} ${day} ${month} *`, function() {
         console.log('---------------')
         console.log('Running Text Cron Job')

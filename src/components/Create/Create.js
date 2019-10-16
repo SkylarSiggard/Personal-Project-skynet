@@ -71,7 +71,7 @@ export default class Create extends Component {
                 })
             })
         axios.post('/api/messages', {
-            title: 'Event name: ' + this.state.title,
+            title: 'New Event: ' + this.state.title,
             description: ' the details of the event ' + this.state.description,
             starting: ' the event starts at ' + moment(this.state.starting).format('llll'),
             ending: ' and ends on ' + moment(this.state.ending).format('llll'),
