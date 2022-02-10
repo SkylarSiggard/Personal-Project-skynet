@@ -25,7 +25,7 @@
     "moment-timezone": "^0.5.26",
     "mongoose": "^5.7.3",
     "node-cron": "^2.0.3",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "react": "^16.10.1",
     "react-datepicker": "^2.9.6",
     "react-dom": "^16.10.1",
